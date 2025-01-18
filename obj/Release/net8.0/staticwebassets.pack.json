@@ -1,0 +1,353 @@
+{
+  "Files": [
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\obj\\Release\\net8.0\\scopedcss\\projectbundle\\gestioncommande.bundle.scp.css",
+      "PackagePath": "staticwebassets\\gestioncommande.bundle.scp.css"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\css\\output.css",
+      "PackagePath": "staticwebassets\\css\\output.css"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\css\\site.css",
+      "PackagePath": "staticwebassets\\css\\site.css"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\css\\tailwind.css",
+      "PackagePath": "staticwebassets\\css\\tailwind.css"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\favicon.ico",
+      "PackagePath": "staticwebassets\\favicon.ico"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\image\\Logo.png",
+      "PackagePath": "staticwebassets\\image\\Logo.png"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\image\\banner.jpg",
+      "PackagePath": "staticwebassets\\image\\banner.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\image\\banque.png",
+      "PackagePath": "staticwebassets\\image\\banque.png"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\image\\bnnerimage.jpg",
+      "PackagePath": "staticwebassets\\image\\bnnerimage.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\image\\e52008c9-8951-4e10-8ca8-a1c8f25cae0f.webp",
+      "PackagePath": "staticwebassets\\image\\e52008c9-8951-4e10-8ca8-a1c8f25cae0f.webp"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\image\\image.png",
+      "PackagePath": "staticwebassets\\image\\image.png"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\image\\logo1.gif",
+      "PackagePath": "staticwebassets\\image\\logo1.gif"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\image\\logo3.png",
+      "PackagePath": "staticwebassets\\image\\logo3.png"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\image\\orangemoney.png",
+      "PackagePath": "staticwebassets\\image\\orangemoney.png"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\image\\produit\\bonnetbeige.png",
+      "PackagePath": "staticwebassets\\image\\produit\\bonnetbeige.png"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\image\\produit\\groupeDeSac (12).png",
+      "PackagePath": "staticwebassets\\image\\produit\\groupeDeSac (12).png"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\image\\produit\\nounours.png",
+      "PackagePath": "staticwebassets\\image\\produit\\nounours.png"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\image\\produit\\packet (4).png",
+      "PackagePath": "staticwebassets\\image\\produit\\packet (4).png"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\image\\produit\\pantalontrio (6).png",
+      "PackagePath": "staticwebassets\\image\\produit\\pantalontrio (6).png"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\image\\produit\\pantalontrio (8).png",
+      "PackagePath": "staticwebassets\\image\\produit\\pantalontrio (8).png"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\image\\produit\\sousvetementrose.png",
+      "PackagePath": "staticwebassets\\image\\produit\\sousvetementrose.png"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\image\\wav.png",
+      "PackagePath": "staticwebassets\\image\\wav.png"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\js\\Achat.js",
+      "PackagePath": "staticwebassets\\js\\Achat.js"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\js\\Produit.js",
+      "PackagePath": "staticwebassets\\js\\Produit.js"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\js\\ProduitIndex.js",
+      "PackagePath": "staticwebassets\\js\\ProduitIndex.js"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\js\\site.js",
+      "PackagePath": "staticwebassets\\js\\site.js"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\LICENSE",
+      "PackagePath": "staticwebassets\\lib\\bootstrap"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-grid.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-reboot.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap-utilities.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\css\\bootstrap.rtl.min.css.map"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.esm.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map",
+      "PackagePath": "staticwebassets\\lib\\bootstrap\\dist\\js\\bootstrap.min.js.map"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.js"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation-unobtrusive\\jquery.validate.unobtrusive.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\jquery-validation\\LICENSE.md",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\LICENSE.md"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.js"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\additional-methods.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.js"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\jquery-validation\\dist\\jquery.validate.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery-validation\\dist\\jquery.validate.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\jquery\\LICENSE.txt",
+      "PackagePath": "staticwebassets\\lib\\jquery\\LICENSE.txt"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\jquery\\dist\\jquery.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.js"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\jquery\\dist\\jquery.min.js",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.js"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\lib\\jquery\\dist\\jquery.min.map",
+      "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.build.gestioncommande.props",
+      "PackagePath": "build\\gestioncommande.props"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.gestioncommande.props",
+      "PackagePath": "buildMultiTargeting\\gestioncommande.props"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.buildTransitive.gestioncommande.props",
+      "PackagePath": "buildTransitive\\gestioncommande.props"
+    },
+    {
+      "Id": "obj\\Release\\net8.0\\staticwebassets\\msbuild.gestioncommande.Microsoft.AspNetCore.StaticWebAssets.props",
+      "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
+    }
+  ],
+  "ElementsToRemove": []
+}

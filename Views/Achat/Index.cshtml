@@ -1,0 +1,205 @@
+<main class="pt-2 sm:ml-40  overflow-hidden ">
+    <h1 class="text-3xl text-start text-black font-semibold text-center mb-6   font-bold"><span class="underline">
+            Votre Panier</span></h1>
+
+    <form asp-action="Create1" id="form" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-red-500"></div>
+        <div class="relative overflow-x-auto mt-4">
+            @if (ViewBag.panier != null && ViewBag.panier.detailCommande != null)
+            {
+                <div class="flex flex-row space-x-12">
+                    <div class="flex flex-col justify-between">
+                        @foreach (var item in ViewBag.panier.detailCommande)
+                        {
+
+                            <div
+                                class="flex flex-col md:flex-row gap-8 p-6 bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 my-4">
+                                <!-- Image Container -->
+                                <div class="relative w-full md:w-44 aspect-square overflow-hidden rounded-lg">
+                                    <img src="@item.produit.FileName"
+                                        class="w-full h-full object-cover transform hover:scale-105 transition-transform duration-300"
+                                        alt="">
+                                </div>
+
+                                <!-- Content Container -->
+                                <div class="flex-1 flex flex-col">
+                                    <!-- Product Info -->
+                                    <h1 class="text-xl font-bold text-gray-800 mb-2">@item.produit.Libelle</h1>
+                                    <p class="text-gray-600 text-sm mb-6">Un sac qui combine mode et fonctionnalité – votre
+                                        nouveau compagnon préféré</p>
+
+                                    <!-- Price, Quantity, and Delete Controls -->
+                                    <div class="flex flex-wrap items-center justify-between gap-4 mt-auto">
+                                        <!-- Price -->
+                                        <div class="text-lg font-bold text-gray-800">
+                                            @item.produit.Prix $
+                                        </div>
+
+                                        <!-- Quantity Controls -->
+                                        <div class="flex items-center gap-3 bg-gray-50 p-2 rounded-lg">
+                                            <button type="button"
+                                                class="w-8 h-8 flex items-center justify-center text-lg font-medium text-white bg-orange1 rounded-md shadow-sm hover:bg-gray-100 active:bg-gray-200 transition-colors duration-150"
+                                                onclick="decreaseQuantity(@item.IdTemporaire)">
+                                                −
+                                            </button>
+                                            <input type="number" name="quantities[@item.IdTemporaire]"
+                                                id="quantity_@item.IdTemporaire" value="@item.qteCommande" aria-valuemin="1"
+                                                min="1"
+                                                class="w-16 h-8 text-center text-gray-800 font-medium bg-transparent border-0 focus:ring-0 focus:outline-none" />
+                                            <button type="button"
+                                                class="w-8 h-8 flex items-center justify-center text-lg font-medium text-white bg-orange1 rounded-md shadow-sm hover:bg-gray-100 active:bg-gray-200 transition-colors duration-150"
+                                                onclick="increaseQuantity(@item.IdTemporaire)">
+                                                +
+                                            </button>
+                                        </div>
+
+                                        <!-- Delete Button -->
+                                        <a asp-action="Deletedetail" asp-route-id="@item.IdTemporaire"
+                                            class="p-2 rounded-full hover:bg-red-50 text-red-500 hover:text-red-600 transition-colors">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" class="lucide lucide-trash-2">
+                                                <path d="M3 6h18" />
+                                                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                                                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                                                <line x1="10" x2="10" y1="11" y2="17" />
+                                                <line x1="14" x2="14" y1="11" y2="17" />
+                                            </svg>
+                                        </a>
+
+
+                                        @* <button type="submit" type="button" onclick="deletedetail(@item.IdTemporaire)"
+                                            class="p-2 rounded-full hover:bg-red-50 text-red-500 hover:text-red-600 transition-colors">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" class="lucide lucide-trash-2">
+                                                <path d="M3 6h18" />
+                                                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                                                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                                                <line x1="10" x2="10" y1="11" y2="17" />
+                                                <line x1="14" x2="14" y1="11" y2="17" />
+                                            </svg>
+                                        </button> *@
+
+
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        }
+                    </div>
+
+                    <div class="w-auto h-96 flex border-1 bg-white shadow-lg rounded-md p-4 flex flex-col">
+                        <h3 class="text-darkinti text-xl">Resume du panier</h3>
+
+                        <div id="total" class="font-bold text-darkinti border-b border-gray-400 py-6 mb-6">
+                            Sous Total : @ViewBag.panier.PrixTotal.ToString("F2") $
+                        </div>
+                        }
+
+                        <div class="flex flex-col gap-4 mb-6">
+
+                            <div class="flex items-center text-darkinti">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="w-6 h-6 text-green-500 mr-2">
+                                    <path d="M10 20h4M12 4v16M12 4l6 6M12 4l-6 6" />
+                                </svg>
+                                <span class="text-sm">Livraison gratuite sur toutes les commandes</span>
+                            </div>
+
+                            <div class="flex items-center text-darkinti">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="w-6 h-6 text-blue-500 mr-2">
+                                    <path d="M12 8v8M8 12h8M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z" />
+                                </svg>
+                                <span class="text-sm">Garantie satisfait ou remboursé</span>
+                            </div>
+
+                            <div class="flex items-center text-darkinti">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="w-6 h-6 text-yellow-500 mr-2">
+                                    <path d="M12 18V6M6 12l6 6 6-6" />
+                                </svg>
+                                <span class="text-sm">Support client 24/7 disponible</span>
+                            </div>
+                        </div>
+
+                        <div>
+                            <Button type="submit"
+                                class="bg-orange1 w-full text-or px-2 py-3 rounded hover:bg-orange1">Commander</Button>
+                        </div>
+                    </div>
+                </div>
+
+            }
+            else
+            {
+                <div class="flex flex-row justify-between">
+                    <div>
+                        <div class="w-auto flex border-l border-darkinti  p-4 flex flex-col">
+                            <div class="text-darkinti text-2xl">Votre Panier est vide</div>
+                            <h2>
+                                <p class="text-gray-700 text-lg">Ajoutez des produits à votre panier pour commencer vos
+                                    achats.</p>
+                            </h2>
+                        </div>
+                        <div class="">
+                            <button
+                                class="p-2 ml-4 w-auto h-auto bg-orange1 text-white rounded-lg hover:bg-fond hover:text-darkintin transition font-bold duration-300">
+                                <span>Commencez vos achats</span>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="w-auto h-96 flex border-1 bg-white shadow-lg rounded-md p-4 flex flex-col">
+                        <h3 class="text-darkinti text-xl">Resume du panier</h3>
+                        <div id="total" class="font-bold text-darkinti border-b border-gray-400 py-6 mb-6">
+                            Sous Total :0.0 $
+                        </div>
+                        <div class="flex flex-col gap-4 mb-6">
+
+                            <div class="flex items-center text-darkinti">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="w-6 h-6 text-green-500 mr-2">
+                                    <path d="M10 20h4M12 4v16M12 4l6 6M12 4l-6 6" />
+                                </svg>
+                                <span class="text-sm">Livraison gratuite sur toutes les commandes</span>
+                            </div>
+
+                            <div class="flex items-center text-darkinti">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="w-6 h-6 text-blue-500 mr-2">
+                                    <path d="M12 8v8M8 12h8M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z" />
+                                </svg>
+                                <span class="text-sm">Garantie satisfait ou remboursé</span>
+                            </div>
+
+                            <div class="flex items-center text-darkinti">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                    fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                    stroke-linejoin="round" class="w-6 h-6 text-yellow-500 mr-2">
+                                    <path d="M12 18V6M6 12l6 6 6-6" />
+                                </svg>
+                                <span class="text-sm">Support client 24/7 disponible</span>
+                            </div>
+                        </div>
+
+                        <div class="disabled">
+                            <Button type="submit"
+                                class="bg-orange1 disabled w-full border-orange1 border-2 text-or px-2 py-3 rounded hover:bg-white hover:text-orange1">Commander</Button>
+                        </div>
+                    </div>
+
+                </div>
+            }
+    </form>
+
+</main>
+
+<script src="~/js/Achat.js"></script>

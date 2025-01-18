@@ -1,0 +1,222 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - gestioncommande</title>
+    <link rel="stylesheet" href="~/css/output.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+    <link rel="stylesheet" href="~/gestioncommande.styles.css" asp-append-version="true" />
+
+
+</head>
+
+
+<body class="bg-gray-100 text-gray-200">
+    @inject IHttpContextAccessor HttpContextAccessor
+    @using gestioncommande.Controllers
+    @using gestioncommande.Helpers;
+
+    <header class="sticky top-0 left-0 right-0 z-10">
+        <nav class="bg-white shadow-lg">
+            <div class="max-w-7xl mx-auto px-4">
+                <div class="flex justify-between items-center h-16">
+                    <!-- Logo -->
+                    <div class="flex justify-center items-center w-16 h-16">
+                        <img src="~/image/logo1.gif" alt="" class="object-contain max-w-full h-auto">
+                    </div>
+
+
+                    <!-- Navigation Links -->
+                    <div class="hidden md:flex items-center space-x-8">
+                        <a asp-controller="Home" asp-action="Index"
+                            class="text-gray-700 hover:text-[#D46F4D] px-3 py-2 rounded-md font-medium">Accueil</a>
+                        <a asp-controller="Commande" asp-action="Index"
+                            class="text-gray-700 hover:text-[#D46F4D] px-3 py-2 rounded-md font-medium">Commande</a>
+                        <a asp-controller="Produit" asp-action="Index"
+                            class="text-gray-700 hover:text-[#D46F4D] px-3 py-2 rounded-md font-medium">Produit</a>
+                        <a asp-controller="Propos" asp-action="Index"
+                            class="text-gray-700 hover:text-[#D46F4D] px-3 py-2 rounded-md font-medium">A Propos</a>
+                    </div>
+
+                    <!-- Right Section -->
+                    <div class="flex items-center space-x-6">
+                        @if (User.IsInRole("RS") == false)
+                        {
+                            <!-- Cart Icon -->
+                            <div class="relative">
+                                <a asp-controller="Achat" asp-action="index" class="text-gray-700 hover:text-[#D46F4D]">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                        stroke="currentColor" stroke-width="2">
+                                        <circle cx="8" cy="21" r="1" />
+                                        <circle cx="19" cy="21" r="1" />
+                                        <path
+                                            d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
+                                    </svg>
+                                    @{
+                                        var panier =
+                                        HttpContextAccessor.HttpContext.Session.GetObjectFromJson<Panier>("panier");
+                                        var itemCount = panier?.detailCommande?.Count ?? 0;
+                                    }
+                                    <span
+                                        class="absolute -top-2 -right-2 bg-[#D46F4D] text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center"
+                                        id="cartItemCount">
+                                        @itemCount
+                                    </span>
+                                </a>
+                            </div>
+                        }
+
+                        <!-- Profile -->
+                        <div class="flex items-center space-x-3">
+                            <img src="~/image/image.png" alt="Profile"
+                                class="h-10 w-10 rounded-full object-cover border-2 border-[#D46F4D]" />
+
+                            <!-- Logout Button -->
+                            <a asp-controller="Connexion" asp-action="logout"
+                                class="bg-[#D46F4D] text-white px-4 py-2 rounded-lg hover:bg-[#D46F4D]/90 transition duration-200">
+                                Logout
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <div class="container mx-auto p-4 bg-gray-100">
+        <main role="main">
+            @RenderBody()
+        </main>
+    </div>
+
+    <footer class="bg-gradient-to-br from-gray-50 to-gray-100 pt-20 mt-12 pb-10">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="grid md:grid-cols-4 gap-12 pb-12">
+                <div class="space-y-4">
+                    <h4
+                        class="font-bold text-xl text-gray-800 relative after:content-[''] after:absolute after:w-12 after:h-1 after:bg-orange1 after:-bottom-2 after:left-0">
+                        À propos</h4>
+                    <p class="text-gray-600 leading-relaxed">Votre boutique de confiance pour les vêtements de bébé de
+                        qualité supérieure depuis 2020.</p>
+                    <div class="flex space-x-4 pt-4">
+                        <a href="#"
+                            class="w-10 h-10 bg-orange1 text-white rounded-full flex items-center justify-center hover:bg-orange1/90 transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M24 12.07C24 5.41 18.63 0 12 0S0 5.4 0 12.07C0 18.1 4.39 23.1 10.13 24v-8.44H7.08v-3.49h3.04V9.41c0-3.02 1.8-4.7 4.54-4.7 1.31 0 2.68.24 2.68.24v2.97h-1.5c-1.5 0-1.96.93-1.96 1.89v2.26h3.32l-.53 3.5h-2.8V24C19.62 23.1 24 18.1 24 12.07" />
+                            </svg>
+                        </a>
+                        <a href="#"
+                            class="w-10 h-10 bg-orange1 text-white rounded-full flex items-center justify-center hover:bg-orange1/90 transition-colors">
+                            <svg class="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
+                                <path
+                                    d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+
+                <div class="space-y-4">
+                    <h4
+                        class="font-bold text-xl text-gray-800 relative after:content-[''] after:absolute after:w-12 after:h-1 after:bg-orange1 after:-bottom-2 after:left-0">
+                        Navigation</h4>
+                    <ul class="space-y-3">
+                        <li><a href="#"
+                                class="text-gray-600 hover:text-orange1 transition-colors flex items-center"><span
+                                    class="w-2 h-2 bg-orange1/30 rounded-full mr-2"></span>Accueil</a></li>
+                        <li><a href="#"
+                                class="text-gray-600 hover:text-orange1 transition-colors flex items-center"><span
+                                    class="w-2 h-2 bg-orange1/30 rounded-full mr-2"></span>Collections</a></li>
+                        <li><a href="#"
+                                class="text-gray-600 hover:text-orange1 transition-colors flex items-center"><span
+                                    class="w-2 h-2 bg-orange1/30 rounded-full mr-2"></span>À propos</a></li>
+                        <li><a href="#"
+                                class="text-gray-600 hover:text-orange1 transition-colors flex items-center"><span
+                                    class="w-2 h-2 bg-orange1/30 rounded-full mr-2"></span>Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="space-y-4">
+                    <h4
+                        class="font-bold text-xl text-gray-800 relative after:content-[''] after:absolute after:w-12 after:h-1 after:bg-orange1 after:-bottom-2 after:left-0">
+                        Contact</h4>
+                    <ul class="space-y-3">
+                        <li class="flex items-center text-gray-600">
+                            <svg class="w-5 h-5 text-orange1 mr-3" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                            </svg>
+                            contact@boutique.com
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <svg class="w-5 h-5 text-orange1 mr-3" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                            </svg>
+                            01 23 45 67 89
+                        </li>
+                        <li class="flex items-center text-gray-600">
+                            <svg class="w-5 h-5 text-orange1 mr-3" fill="none" stroke="currentColor"
+                                viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            Paris, France
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="space-y-4">
+                    <h4
+                        class="font-bold text-xl text-gray-800 relative after:content-[''] after:absolute after:w-12 after:h-1 after:bg-orange1 after:-bottom-2 after:left-0">
+                        Newsletter</h4>
+                    <p class="text-gray-600">Restez informé de nos dernières collections et promotions.</p>
+                    <form class="space-y-3">
+                        <input type="email" placeholder="Votre email"
+                            class="w-full px-4 py-3 rounded-lg border border-gray-200 focus:outline-none focus:ring-2 focus:ring-orange1/50 focus:border-orange1">
+                        <button
+                            class="w-full bg-orange1 text-white px-6 py-3 rounded-lg hover:bg-orange1/90 transition-colors font-medium flex items-center justify-center space-x-2">
+                            <span>S'inscrire</span>
+                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M14 5l7 7m0 0l-7 7m7-7H3" />
+                            </svg>
+                        </button>
+                    </form>
+                </div>
+            </div>
+
+            <div class="border-t border-gray-200 pt-8 mt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
+                    <p class="text-gray-600 text-sm">&copy; 2024 Boutique Bébé. Tous droits réservés.</p>
+                    <div class="flex space-x-6">
+                        <a href="#" class="text-gray-600 hover:text-orange1 text-sm">Mentions légales</a>
+                        <a href="#" class="text-gray-600 hover:text-orange1 text-sm">Politique de confidentialité</a>
+                        <a href="#" class="text-gray-600 hover:text-orange1 text-sm">CGV</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/js/Produit.js" asp-append-version="true"></script>
+    @await RenderSectionAsync("Scripts", required: false)
+    <script src="https://cdn.jsdelivr.net/npm/flowbite@2.5.2/dist/flowbite.min.js"></script>
+    <script src="/node_modules/flowbite/dist/flowbite.min.js"></script>
+
+</body>
+
+</html>

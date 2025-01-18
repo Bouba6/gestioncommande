@@ -1,0 +1,97 @@
+@model gestioncommande.Models.Produit
+
+@{
+    Layout = "_layout";
+}
+
+<main class="p-6 sm:ml-52 bg-white  rounded-lg">
+    <h1 class="text-2xl font-bold mb-6 text-gray-800 flex justify-center">Edit Product</h1>
+
+    <form asp-action="Edit" class="max-w-2xl mx-auto bg-white p-8 rounded-xl shadow-lg space-y-8">
+        <!-- Validation Summary -->
+        <div asp-validation-summary="All" class="p-4 bg-red-50 text-red-600 rounded-lg mb-6"></div>
+
+        <!-- Grid Container -->
+        <div class="grid md:grid-cols-2 gap-6">
+            <!-- Left Column -->
+            <div class="space-y-6">
+                <!-- Product Name -->
+                <div class="form-group">
+                    <label asp-for="Libelle" class="block text-sm font-semibold text-gray-700 mb-2">
+                        Product Name
+                    </label>
+                    <input asp-for="Libelle"
+                        class="w-full px-4 py-3 rounded-lg text-darkinti border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150" />
+                    <span asp-validation-for="Libelle" class="mt-1 text-red-500 text-sm block"></span>
+                </div>
+
+                <!-- Price -->
+                <div class="form-group">
+                    <label asp-for="Prix" class="block text-sm font-semibold text-gray-700 mb-2">
+                        Price
+                    </label>
+                    <input asp-for="Prix" type="number" step="0.01"
+                        class="w-full px-4 py-3 rounded-lg border text-darkinti border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150" />
+                    <span asp-validation-for="Prix" class="mt-1 text-red-500 text-sm block"></span>
+                </div>
+
+                <!-- Quantity -->
+                <div class="form-group">
+                    <label asp-for="Quantite" class="block text-sm font-semibold text-gray-700 mb-2">
+                        Quantity
+                    </label>
+                    <input asp-for="Quantite" type="number"
+                        class="w-full px-4 py-3 rounded-lg border text-darkinti border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150" />
+                    <span asp-validation-for="Quantite" class="mt-1 text-red-500 text-sm block"></span>
+                </div>
+            </div>
+
+            <!-- Right Column -->
+            <div class="h-full bg-red-50">
+                <!-- Image Upload -->
+                <div class="form-group h-auto w-full">
+                    @* <label asp-for="FileName" class="block text-sm font-semibold text-gray-700 mb-2 w-full">
+                        Image
+                    </label> *@
+                    <div
+                        class="flex flex-col items-center p-4 border-2  border-dashed border-gray-300 rounded-lg hover:border-blue-500 transition duration-150 w-full">
+                        @* <input asp-for="FileName" type="file" id="imageUpload" accept="image/*"
+                            class="w-full cursor-pointer" /> *@
+                        <img id="imagePreview" src="@Model.FileName" alt="Product Image"
+                            class="mt-4 w-12 h-16 object-cover rounded-lg shadow-md" />
+                    </div>
+
+                    @* <span asp-validation-for="FileName" class="mt-1 text-red-500 text-sm block w-full"></span> *@
+                </div>
+
+
+                <!-- Threshold Quantity -->
+                <div class="form-group h-auto w-full">
+                    <label asp-for="QteSeuil" class="block text-sm font-semibold text-gray-700 mb-2 w-full">
+                        Quantity Seuil
+                    </label>
+                    <input asp-for="QteSeuil" type="number"
+                        class="w-full px-4 py-3 rounded-lg text-darkinti border border-gray-300 focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition duration-150" />
+                    <span asp-validation-for="QteSeuil" class="mt-1 text-red-500 text-sm block w-full"></span>
+                </div>
+            </div>
+        </div>
+
+
+
+        <input type="hidden" asp-for="Id" />
+        <input type="hidden" asp-for="FileName" />
+
+        <!-- Action Buttons -->
+        <div class="flex justify-end space-x-4 pt-6 border-t">
+            <button type="submit"
+                class="px-6 py-3 bg-blue-600 text-white font-medium rounded-lg shadow-sm hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition duration-150">
+                Save
+            </button>
+            <a asp-action="Index"
+                class="px-6 py-3 bg-gray-600 text-white font-medium rounded-lg shadow-sm hover:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition duration-150">
+                Back to List
+            </a>
+        </div>
+    </form>
+</main>

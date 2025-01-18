@@ -1,0 +1,447 @@
+@model gestioncommande.Models.Commande
+
+@{
+    Layout = "_layout";
+}
+
+<main class="">
+
+
+
+    @if (User.IsInRole("CLIENT") == false && Model.Taken == false)
+    {
+        <!-- Modal toggle -->
+        <button data-modal-target="crud-modal" data-modal-toggle="crud-modal"
+            class="block text-white bg-orange1  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center  dark:focus:ring-blue-800"
+            type="button">
+            Transferer Commande
+        </button>
+
+        <!-- Main modal -->
+        <div id="crud-modal" tabindex="-1" aria-hidden="true"
+            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative p-4 w-full max-w-md max-h-full">
+                <!-- Modal content -->
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <!-- Modal header -->
+                    <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                            Transferer la commande
+                        </h3>
+                        <button type="button"
+                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                            data-modal-toggle="crud-modal">
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 14 14">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                            </svg>
+                            <span class="sr-only">Close modal</span>
+                        </button>
+                    </div>
+                    <!-- Modal body -->
+                    <form asp-action="Transfer" method="post" class="p-4 md:p-5">
+                        <input type="hidden" name="commandeId" asp-for="@Model.Id">
+                        <div class="">
+                            <div class="flex flex-col">
+                                <div class="col-span-2 sm:col-span-1 w-full">
+                                    <label for="category"
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                        Category
+                                    </label>
+                                    <select id="category" name="livreurId"
+                                        class="bg-gray-50  border border-gray-300 text-gray-900 text-sm rounded-lg block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white">
+                                        <option selected="">Select Livreur</option>
+                                        @foreach (var item in ViewBag.livreur)
+                                        {
+                                            <option value="@item.Id">@item.Nom</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-span-2 mt-3 sm:col-span-1 w-full">
+                                    <label for="date" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                        Select Date
+                                    </label>
+                                    <input type="date" id="date" name="date"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                </div>
+
+                                <div class="col-span-2 mt-3 sm:col-span-1 w-full">
+                                    <label for="addresse"
+                                        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                        Select Addresse
+                                    </label>
+                                    <input type="texte" name="addresse"
+                                        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-500 focus:border-primary-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500">
+                                </div>
+                            </div>
+
+                        </div>
+                        <button type="submit"
+                            class="text-white mt-3 inline-flex items-center bg-orange1 hover:bg-white hover:text-orange1 focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center ">
+                            <svg class="me-1 -ms-1 w-5 h-5" fill="currentColor" viewBox="0 0 20 20"
+                                xmlns="http://www.w3.org/2000/svg">
+                                <path fill-rule="evenodd"
+                                    d="M10 5a1 1 0 011 1v3h3a1 1 0 110 2h-3v3a1 1 0 11-2 0v-3H6a1 1 0 110-2h3V6a1 1 0 011-1z"
+                                    clip-rule="evenodd"></path>
+                            </svg>
+                            Save
+                        </button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    }
+    @if (Model.hasPayed == false && User.IsInRole("CLIENT") && Model.Taken == true)
+    {
+
+        <button data-modal-target="crud-modal1" data-modal-toggle="crud-modal1"
+            class="block text-white bg-orange1  focus:ring-4 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center  dark:focus:ring-blue-800"
+            type="button">
+            Paiement Commande
+        </button>
+
+
+        <!-- Main modal -->
+        <div id="crud-modal1" tabindex="-1" aria-hidden="true"
+            class="hidden overflow-y-auto overflow-x-hidden fixed top-0 right-0 left-0 z-50 justify-center items-center w-full md:inset-0 h-[calc(100%-1rem)] max-h-full">
+            <div class="relative p-4 w-full max-w-md max-h-full">
+                <!-- Modal content -->
+                <div class="relative bg-white rounded-lg shadow dark:bg-gray-700">
+                    <!-- Modal header -->
+                    <div class="flex items-center justify-between p-4 md:p-5 border-b rounded-t dark:border-gray-600">
+                        <h3 class="text-lg font-semibold text-gray-900 dark:text-white">
+                            Paiement la commande
+                        </h3>
+                        <button type="button"
+                            class="text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 ms-auto inline-flex justify-center items-center dark:hover:bg-gray-600 dark:hover:text-white"
+                            data-modal-toggle="crud-modal1">
+                            <svg class="w-3 h-3" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none"
+                                viewBox="0 0 14 14">
+                                <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="m1 1 6 6m0 0 6 6M7 7l6-6M7 7l-6 6" />
+                            </svg>
+                            <span class="sr-only">Close modal</span>
+                        </button>
+                    </div>
+                    <!-- Modal body -->
+                    <form asp-controller="Paiement" asp-action="paiement" method="post"
+                        class="max-w-md mx-auto p-6 bg-white rounded-xl shadow-lg">
+                        <input type="hidden" name="commandeId" asp-for="@Model.Id">
+
+                        <div class="space-y-6">
+                            <div class="space-y-4">
+                                <label class="block text-sm font-medium text-gray-700">
+                                    Sélectionner le mode de paiement
+                                </label>
+                                <div class="flex flex-row w-full gap-2">
+                                    <div class="w-1/3">
+                                        <input type="radio" name="paymentMethod" id="orange" value="1"
+                                            class="peer hidden" />
+                                        <label for="orange"
+                                            class="block cursor-pointer p-auto border-2 rounded-lg text-center peer-checked:border-orange-500 peer-checked:bg-orange-50 hover:bg-gray-50 transition-all">
+                                            <div class="h-16 mb-3 flex items-center justify-center">
+                                                <img src="~/image/orangemoney.png" alt="Wave"
+                                                    class="h-full object-contain" />
+
+                                            </div>
+                                            <div class="font-medium text-gray-900">Orange Money</div>
+                                            <div class="mt-1 text-sm text-gray-500">+221 @Model.Client.users.telephone</div>
+                                        </label>
+                                    </div>
+
+                                    <div class="w-1/3">
+                                        <input type="radio" name="paymentMethod" id="wave" value="0" class="peer hidden" />
+                                        <label for="wave"
+                                            class="block cursor-pointer p-auto border-2 rounded-lg text-center peer-checked:border-blue-500 peer-checked:bg-blue-50 hover:bg-gray-50 transition-all">
+                                            <div class="h-16 mb-3 flex items-center justify-center">
+                                                <img src="~/image/wav.png" alt="Wave" class="h-full object-contain" />
+
+                                            </div>
+                                            <div class="font-medium text-gray-900">Wave</div>
+                                            <div class="mt-1 text-sm text-gray-500">+221 @Model.Client.users.telephone</div>
+                                        </label>
+                                    </div>
+
+                                    <div class="w-1/3">
+                                        <input type="radio" name="paymentMethod" id="wave" value="0" class="peer hidden" />
+                                        <label for="wave"
+                                            class="block cursor-pointer p-auto border-2 rounded-lg text-center peer-checked:border-blue-500 peer-checked:bg-blue-50 hover:bg-gray-50 transition-all">
+                                            <div class="h-16 mb-3 flex items-center justify-center">
+                                                <img src="~/image/banque.png" alt="Wave" class="h-full object-contain" />
+
+                                            </div>
+                                            <div class="font-medium text-gray-900">Cheque</div>
+                                            <div class="mt-1 text-sm text-gray-500">+221 @Model.Client.users.telephone</div>
+                                        </label>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                            <div class="space-y-2">
+                                <label for="reference" class="block text-sm font-medium text-gray-700">
+                                    Référence de transaction
+                                </label>
+                                <input type="text" id="reference" name="reference"
+                                    class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500 transition-all"
+                                    placeholder="Entrez votre référence" />
+                            </div>
+
+                            <button type="submit"
+                                class="w-full flex items-center justify-center gap-2 bg-orange-500 hover:bg-orange-600 text-white font-medium py-3 px-6 rounded-lg transition-colors">
+                                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M9 5l7 7-7 7" />
+                                </svg>
+                                Confirmer le paiement
+                            </button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    <hr class="my-6 border-gray-200" />
+
+    <!-- Section contenant la carte et l'image -->
+    <div class="grid md:grid-cols-2 gap-8">
+        <!-- Carte des détails de la commande -->
+        <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+            <div class="flex items-center space-x-3 mb-6">
+                <svg class="w-6 h-6 text-orange1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                        d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2" />
+                </svg>
+                <h2 class="text-xl font-bold text-orange1">Détails de la Commande</h2>
+            </div>
+
+            <div class="space-y-6">
+                <!-- Date de la commande -->
+                <div class="flex flex-row space-x-3 w-full">
+                    <div class="flex items-center w-1/2 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                        <svg class="w-5 h-5 text-gray-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z" />
+                        </svg>
+                        <div class="flex-1">
+                            <div class="text-sm font-medium text-gray-500">Date de la commande</div>
+                            <div class="text-base font-semibold text-gray-900">@Html.DisplayFor(model =>
+                                model.DateCommande)
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Prix total -->
+                    <div class="flex items-center w-1/2 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                        <svg class="w-5 h-5 text-gray-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                        </svg>
+                        <div class="flex-1">
+                            <div class="text-sm font-medium text-gray-500">Prix total</div>
+                            <div class="text-lg font-bold text-blue-600">@Html.DisplayFor(model => model.PrixTotal) €
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- État de paiement -->
+                <div class="flex flex-row space-x-3 w-full">
+                    <div class="flex items-center w-1/2 p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                        <svg class="w-5 h-5 text-gray-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z" />
+                        </svg>
+                        <div class="flex-1">
+                            <div class="text-sm font-medium mb-2 text-gray-500">État de paiement</div>
+                            @if (Model.hasPayed)
+                            {
+                                <span
+                                    class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-green-100 text-green-800">
+                                    <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M5 13l4 4L19 7" />
+                                    </svg>
+                                    Payé
+                                </span>
+                            }
+                            else
+                            {
+                                <span
+                                    class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-red-100 text-red-800">
+                                    <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M6 18L18 6M6 6l12 12" />
+                                    </svg>
+                                    Non payé
+                                </span>
+                            }
+                        </div>
+                    </div>
+
+                    <div class="flex w-1/2 items-center p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                        <svg class="w-5 h-5 text-gray-600 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2m-6 9l2 2 4-4" />
+                        </svg>
+                        <div class="flex-1">
+                            <div class="text-sm font-medium mb-2 text-gray-500">Statut</div>
+                            @if (Model.Taken)
+                            {
+                                <span
+                                    class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800">
+                                    <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    Pris en charge
+                                </span>
+                            }
+                            else
+                            {
+                                <span
+                                    class="inline-flex items-center px-3 py-1 rounded-full text-sm font-medium bg-yellow-100 text-yellow-800">
+                                    <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                            d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                                    </svg>
+                                    En attente
+                                </span>
+                            }
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Statut -->
+
+            </div>
+        </div>
+
+        <!-- Carte client avec photo -->
+        <div class="flex flex-col gap-6">
+            <div class="relative">
+                <img class="w-16 h-16 mx-auto object-cover rounded-full shadow-xl border-4 border-white"
+                    src="~/image/image.png" alt="Photo du client" />
+                <div class="absolute -bottom-3 left-1/2 transform -translate-x-1/2">
+                    <span
+                        class="inline-flex items-center px-4 py-1 rounded-full text-sm font-medium bg-blue-100 text-blue-800 shadow-sm">
+                        Client
+                    </span>
+                </div>
+            </div>
+
+            <div class="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition-shadow duration-300">
+                <div class="flex items-center space-x-3 mb-6">
+                    <svg class="w-6 h-6 text-orange1" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                            d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                    </svg>
+                    <h2 class="text-xl font-bold text-orange1">Informations du Client</h2>
+                </div>
+
+                <div class="space-y-4">
+                    <div class="p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                        <div class="text-sm font-medium text-gray-500">Nom complet</div>
+                        <div class="text-base font-semibold text-gray-900">
+                            @Html.DisplayFor(model => model.Client.users.Prenom) @Html.DisplayFor(model =>
+                            model.Client.users.Nom)
+                        </div>
+                    </div>
+
+                    <div class="p-3 bg-gray-50 rounded-lg hover:bg-gray-100 transition-colors">
+                        <div class="text-sm font-medium text-gray-500">Adresse de livraison</div>
+                        <div class="flex items-center gap-2 text-base text-gray-900">
+                            <svg class="w-5 h-5 text-gray-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                    d="M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+                            </svg>
+                            @Html.DisplayFor(model => model.Client.addresse)
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class=" rounded-xl shadow-lg overflow-hidden mt-10">
+        <H1 class="text-3xl text-center text-orange1 font-semibold text-center mb-6    font-bold">Produits</H1>
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-4 p-4">
+            @foreach (var item in ViewBag.produits)
+            {
+                <div
+                    class="w-full max-w-sm bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+                    <!-- Image du produit -->
+                    <div class="relative h-64 overflow-hidden">
+                        <img src="@item.produit.FileName" alt="@item.produit.Libelle"
+                            class="w-full h-full  object-cover transition-transform duration-300 hover:scale-105"
+                            onerror="this.src='/images/placeholder.jpg'" />
+                        <div class="absolute top-3 right-3">
+                            <span class="bg-orange1 text-white px-3 py-1 rounded-full text-sm font-semibold shadow-md">
+                                @item.qteCommande unité(s)
+                            </span>
+                        </div>
+                    </div>
+
+                    <!-- Informations du produit -->
+                    <div class="p-4">
+                        <div class="flex justify-between items-start mb-4">
+                            <h3 class="text-lg font-bold text-gray-900">@item.produit.Libelle</h3>
+                            <span class="text-md font-bold text-orange1">@item.produit.Prix €</span>
+                        </div>
+
+                        <div class="space-y-4">
+                            <!-- Description -->
+                            <div class="text-gray-600">
+                                <p class="text-sm">@(item.produit.Description ?? "Aucune description disponible")</p>
+                            </div>
+
+                            <!-- Total -->
+                            <div class="pt-4 border-t border-gray-100">
+                                <div class="flex justify-between items-center">
+                                    <span class="text-sm font-medium text-gray-500">Total</span>
+                                    <span class="text-lg font-bold text-orange1">
+                                        @(item.produit.Prix * item.qteCommande) €
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+
+</main>

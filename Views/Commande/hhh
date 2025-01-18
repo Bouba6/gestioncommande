@@ -1,0 +1,317 @@
+@model gestioncommande.Models.Commande
+
+@{
+Layout = "_layout";
+}
+
+<main class="p-4 sm:ml-64 overflow-hidden">
+
+    <div class="flex flex-col justify-center items-center">
+        <h1 class="text-3xl  font-bold">Ajout Commande</h1>
+        <div class="md:w-xgg sm:w-900 mx-auto p-6 border-t-black shadow-md border-2 rounded-md m-6">
+            <form asp-action="AjouterProduit" method="post">
+                <div class=" flex flex-row items-center space-x-4 mt-4 justify-between">
+                    <div class="">
+                        <label for="Produit">Produit</label>
+                        <select name="produitId" id="Produit"
+                            class="p-2 mt-3 border border-gray-300 w-full rounded-md focus:outline-none focus:border-blue-500">
+                            <option value="">Select a libelle</option>
+                            @if (ViewBag.produits != null)
+                            {
+                            foreach (var produits in ViewBag.produits)
+                            {
+                            <option value="@produits.Id">@produits.Libelle</option>
+                            }
+                            }
+                        </select>
+                    </div>
+
+                    <div class="">
+                        <label for="Produit">Montant</label>
+                        <input type="number" name="qte"
+                            class="p-2 mt-3 border border-gray-300 w-full rounded-md focus:outline-none focus:border-blue-500">
+
+                    </div>
+
+                    <div class="mt-9">
+                        <button type="submit"
+                            class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">jouter</button>
+                    </div>
+                </div>
+            </form>
+            <form asp-action="Create1" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="relative overflow-x-auto shadow-md sm:rounded-lg  mt-4">
+                    <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                        <thead
+                            class="text-xs text-gray-700 uppercase  dark:bg-gray-700 dark:text-gray-400  bg-gray-900">
+                            <tr>
+                                <th scope="col" class="px-6 py-5 text-white">
+                                    libelle
+                                </th>
+                                <th scope="col" class="px-6 py-5 text-white">
+                                    montant
+                                </th>
+                                <th scope="col" class="px-6 py-5 text-white">
+                                    quantite
+                                </th>
+                                <th scope="col" class="px-6 py-5 text-white">
+                                    Action
+                                </th>
+
+
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in ViewBag.panier.detailCommande)
+                            {
+                            <tr
+                                class="odd:bg-white odd:dark:bg-gray-900 even:bg-gray-50 even:dark:bg-gray-800 border-b dark:border-gray-700">
+                                <td scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    @item.produit.Libelle
+                                </td>
+                                <td scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    @item.Prix
+                                </td>
+                                <td scope="row"
+                                    class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                    @item.qteCommande
+                                </td>
+                                <td>
+                                    <a asp-action="Deletedetail" asp-route-id="@item.Id"
+                                        class="text-red-500 hover:text-red-700">
+                                        Delete</a>
+                                </td>
+                            </tr>
+                            }
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="w-full flex justify-end mt-6">
+                    <button type="submit" class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+                        Save
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
+
+
+
+
+
+
+
+<!-- 
+
+
+
+<main class="p-4 sm:ml-64  overflow-hidden">
+    <h1 class="text-3xl text-start text-darkinto font-semibold text-center mb-6   font-bold"><span class="underline">
+            Votre Panier</span></h1>
+
+    <form asp-action="Create1" method="post">
+        <div asp-validation-summary="ModelOnly" class="text-red-500"></div>
+        <div class="relative overflow-x-auto mt-4">
+            @if (ViewBag.panier != null && ViewBag.panier.detailCommande != null)
+            {
+            <div class="flex flex-row space-x-2">
+                <div class="flex flex-col justify-between">
+                    @foreach (var item in ViewBag.panier.detailCommande)
+                    {
+
+                    <div
+                        class="flex border-t-2 bg-white border-b-2 border-fond flex-row gap-8 mt-6 w-auto items-center">
+                        <div class="w-auto">
+                            <img src="@item.produit.FileName" class="w-44 h-44 object-cover" alt="">
+                        </div>
+
+                        <div class="h-auto">
+                            <h1 class="font-bold text-darkinto mt-1 ">@item.produit.Libelle</h1>
+                            <h2 class="mt-4 text-gray-600">Un sac qui combine mode et fonctionnalité – votre nouveau
+                                compagnon
+                                préféré</h2>
+                            <div class="flex flex-row boder-2  justify-between mt-6 font-bold  text-darkinto">
+                                <div>
+                                    <h1 class="text-darkinto"> @item.produit.Prix</h1>
+                                </div>
+
+                                <div class="flex items-center gap-2">
+                                    <button type="button" class="bg-gray-200 px-3 py-1 rounded hover:bg-gray-300"
+                                        onclick="decreaseQuantity(@item.IdTemporaire)">
+                                        −
+                                    </button>
+                                    <input type="number" name="quantities[@item.IdTemporaire]"
+                                        id="quantity_@item.IdTemporaire" value="@item.qteCommande" aria-valuemin="1"
+                                        class="w-16 text-center border rounded" min="1" />
+                                    <button type="button" class="bg-gray-200 px-3 py-1 rounded hover:bg-gray-300"
+                                        onclick="increaseQuantity(@item.IdTemporaire)">
+                                        +
+                                    </button>
+                                </div>
+                                <div>
+                                    <a asp-action="Deletedetail" asp-route-id="@item.Id"
+                                        class="text-red-500 hover:text-red-700">
+                                        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                            viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                            stroke-linecap="round" stroke-linejoin="round"
+                                            class="lucide lucide-trash-2">
+                                            <path d="M3 6h18" />
+                                            <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                                            <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                                            <line x1="10" x2="10" y1="11" y2="17" />
+                                            <line x1="14" x2="14" y1="11" y2="17" />
+                                        </svg>
+                                    </a>
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    }
+                </div>
+
+                <div
+                    class="w-full md:w-1/2 h-auto flex flex-col border-1 bg-white border-darkinto rounded-md p-4 shadow-lg">
+                    <!-- Sous-total et Total 
+<div class="flex flex-col mb-6">
+    <div class="font-bold text-darkinto border-b border-gray-400 py-6">
+        Sous Total : <span class="text-xl">@ViewBag.panier.PrixTotal $</span>
+    </div>
+    <div class="font-bold text-darkinto border-b border-gray-400 py-6">
+        Total : <span class="text-xl">@ViewBag.panier.PrixTotal $</span>
+    </div>
+</div>
+
+<!-- Informations supplémentaires (Livraison gratuite et autres) 
+<div class="flex flex-col gap-4 mb-6">
+    <!-- Livraison gratuite 
+    <div class="flex items-center text-darkinto">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="w-6 h-6 text-green-500 mr-2">
+            <path d="M10 20h4M12 4v16M12 4l6 6M12 4l-6 6" />
+        </svg>
+        <span class="text-sm">Livraison gratuite sur toutes les commandes</span>
+    </div>
+    <!-- Garantie satisfait ou remboursé 
+    <div class="flex items-center text-darkinto">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="w-6 h-6 text-blue-500 mr-2">
+            <path d="M12 8v8M8 12h8M12 2a10 10 0 1 0 10 10A10 10 0 0 0 12 2z" />
+        </svg>
+        <span class="text-sm">Garantie satisfait ou remboursé</span>
+    </div>
+    <!-- Service client 24/7 
+    <div class="flex items-center text-darkinto">
+        <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none"
+            stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+            class="w-6 h-6 text-yellow-500 mr-2">
+            <path d="M12 18V6M6 12l6 6 6-6" />
+        </svg>
+        <span class="text-sm">Support client 24/7 disponible</span>
+    </div>
+</div>
+
+<!-- Bouton de commande 
+<div>
+    <Button type="submit"
+        class="bg-darkintin w-full text-or px-2 py-3 rounded hover:bg-white hover:text-darkintin transition duration-300">
+        Commander
+    </Button>
+</div>
+</div>
+
+</div>
+
+}
+else
+{
+<div class="flex flex-row justify-between">
+    <div>
+        <div class="w-auto flex border-l border-darkinto  p-4 flex flex-col">
+            <div class="text-darkinto text-2xl">Votre Panier est vide</div>
+            <h2>
+                <p class="text-gray-700 text-lg">Ajoutez des produits à votre panier pour commencer vos
+                    achats.</p>
+            </h2>
+        </div>
+    </div>
+    <button
+        class="p-2 w-auto h-auto bg-darkintin text-white rounded-lg hover:bg-fond hover:text-darkintin transition font-bold duration-300">
+        <span>Commencez vos achats</span>
+    </button>
+
+
+</div>
+}
+</form>
+
+</main>
+
+<script>
+    function increaseQuantity(id) {
+        const input = document.getElementById(`quantity_${id}`);
+        let value = parseInt(input.value) || 0;
+        input.value = value + 1;
+        updateQuantityInSession(id, value + 1);
+    }
+
+    function decreaseQuantity(id) {
+        console.log("je cherche l'id");
+        console.log(id);
+        const input = document.getElementById(`quantity_${id}`);
+        let value = parseInt(input.value) || 0;
+        if (value > 1) {
+            input.value = value - 1;
+            updateQuantityInSession(id, value - 1);
+        }
+    }
+
+
+    function updateQuantityInSession(id, quantity) {
+        const model = {
+            Id: id,
+            qteCommande: quantity
+        }
+        console.log(model);
+        fetch('/Achat/UpdateQuantityInSession', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(model)
+        })
+            .then(response => {
+                // Check if the response is ok and has a body
+                if (!response.ok) {
+                    throw new Error('Failed to update quantity');
+                }
+
+                // Try to parse the JSON, if it fails, handle the error
+                return response.json().catch(() => {
+                    throw new Error('Invalid JSON response');
+                });
+            })
+            .then(data => {
+                // Check if data is valid
+                if (data && data.success) {
+                    console.log('Quantity updated successfully');
+                    console.log(data);
+                    document.getElementById('total').innerText = data.newTotal;
+                } else {
+                    console.error('Error updating quantity', data);
+                }
+            })
+            .catch(error => {
+                console.error('Error updating quantity:', error);
+            });
+    }
+
+</script>

@@ -1,0 +1,64 @@
+@model gestioncommande.Models.Produit
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Create</title>
+</head>
+
+<body>
+
+    <h4>Produit</h4>
+    <hr />
+    <div class="row">
+        <div class="col-md-4">
+            <form asp-action="Create" enctype="multipart/form-data">
+                <div asp-validation-summary="All" class="text-danger"></div>
+                <div class="form-group">
+                    <label asp-for="Libelle" class="control-label"></label>
+                    <input asp-for="Libelle" class="form-control" />
+                    <span asp-validation-for="Libelle" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Prix" class="control-label"></label>
+                    <input asp-for="Prix" class="form-control" />
+                    <span asp-validation-for="Prix" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Quantite" class="control-label"></label>
+                    <input asp-for="Quantite" class="form-control" />
+                    <span asp-validation-for="Quantite" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <label asp-for="QteSeuil" class="control-label"></label>
+                    <input asp-for="QteSeuil" class="form-control" />
+                    <span asp-validation-for="QteSeuil" class="text-danger"></span>
+                </div>
+                <div>
+                    <label asp-for="image" class="control-label"></label>
+                    <input type="File" asp-for="image">
+                    <span asp-validation-for="image" class="text-danger"></span>
+                </div>
+
+                <div class="form-group">
+                    <input type="submit" value="Create" class="btn btn-primary" />
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div>
+        <a asp-action="Index">Back to List</a>
+    </div>
+
+</body>
+
+</html>

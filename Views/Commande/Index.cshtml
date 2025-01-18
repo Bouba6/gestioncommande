@@ -1,0 +1,244 @@
+@model IEnumerable<gestioncommande.Models.Commande>
+
+@{
+    Layout = "_layout";
+}
+
+<main class="">
+    <div class="container mx-auto p-4">
+        <div class="flex flex-row gap-4">
+            <div class="w-full">
+                <div class="w-full flex flex-row justify-between items-center">
+                    <div class="flex flex-row justify-evenly items-center gap-4">
+                        <div>
+                            <form method="get" asp-action="Index"
+                                class="m-2 p-2 bg-gray-100 rounded shadow flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
+                                <!-- Label -->
+                                <label for="StatusFilter"
+                                    class="text-gray-600 font-medium sm:whitespace-nowrap text-sm">
+                                    Filtrer par Date :
+                                </label>
+
+                                <!-- Input -->
+                                <input type="date" id="StatusFilter" name="searchTerm2"
+                                    class="border border-gray-300 rounded p-1 w-48 sm:w-auto text-sm focus:outline-none focus:ring-1 focus:ring-blue-400 focus:border-blue-400"
+                                    placeholder="Search" />
+                            </form>
+                        </div>
+                        <div class="border-none">
+
+
+                            <form asp-action="Index" method="get"
+                                class="m-2 p-2 bg-gray-100 rounded shadow flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
+                                <div class="inline-flex items-center">
+                                    <label for="filter1"
+                                        class="text-gray-600 font-medium sm:whitespace-nowrap text-sm mr-3">
+                                        Filtrer par état
+                                    </label>
+                                    <select id="filter1" name="filter1"
+                                        class="form-control border border-gray-300 rounded p-1 w-48 sm:w-auto text-sm focus:outline-none focus:ring-1 focus:ring-orange1 focus:border-orange1"
+                                        onchange="this.form.submit()">
+                                        <option value="tous" selected="@(ViewBag.searchTerm1 == "tous")">Tout</option>
+                                        <option value="true" selected="@(ViewBag.searchTerm1 == "true")">payer
+                                        </option>
+                                        <option value="false" selected="@(ViewBag.searchTerm1 == "false")">Non
+                                            Payer</option>
+                                    </select>
+                                </div>
+                            </form>
+
+
+
+
+
+                        </div>
+                        <div>
+                            <form asp-action="Index" method="get"
+                                class="m-2 p-2 bg-gray-100 rounded shadow flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
+                                <div class="inline-flex items-center">
+                                    <label for="filter" class="text-gray-700 text-xs font-medium mr-3">
+                                        Filtrer par Taken
+                                    </label>
+                                    <select id="filter" name="filter"
+                                        class="form-control border border border-gray-300 rounded p-1 w-48 sm:w-auto text-sm focus:outline-none focus:ring-1 focus:ring-orange1 focus:border-orange1"
+                                        onchange="this.form.submit()">
+                                        <option value="tous" selected="@(ViewBag.searchTerm == "tous")">Tout</option>
+                                        <option value="false" selected="@(ViewBag.searchTerm == "false")">Non Taken
+                                        </option>
+                                        <option value="true" selected="@(ViewBag.searchTerm == "true")">Taken</option>
+                                    </select>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="overflow-x-auto bg-text rounded-lg shadow-md">
+                    <table class="table-auto w-full bg-text text-left border-collapse">
+                        <thead>
+                            <tr class="bg-darkinti text-white">
+                                <th class="px-4 py-2 border-b">Date Commande</th>
+                                <th class="px-4 py-2 border-b">Prix Total</th>
+                                <th class="px-4 py-2 border-b">Client</th>
+                                @* <th class="px-4 py-2 border-b">Livreur</th> *@
+                                <th class="px-4 py-2 border-b">Payé</th>
+                                <th class="px-4 py-2 border-b">Pris</th>
+                                <th class="px-4 py-2 border-b">Actions</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in Model)
+                            {
+                                <tr class="hover:bg-gray-50 bg-white text-darkinti">
+                                    <td class="px-4 py-2 border-b">@Html.DisplayFor(modelItem => item.DateCommande)</td>
+                                    <td class="px-4 py-2 border-b">@Html.DisplayFor(modelItem => item.PrixTotal)</td>
+                                    <td class="px-4 py-2 border-b">@Html.DisplayFor(modelItem => item.Client.users.Nom)</td>
+                                    @* <td class="px-4 py-2 border-b"> @if (item.Livraison.livreur != null)
+                                        {
+                                            @Html.DisplayFor(modelItem => item.Livraison.livreur.Nom)
+                                        }
+                                        else
+                                        {
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" class="lucide lucide-user-round-x">
+                                                <path d="M2 21a8 8 0 0 1 11.873-7" />
+                                                <circle cx="10" cy="8" r="5" />
+                                                <path d="m17 17 5 5" />
+                                                <path d="m22 17-5 5" />
+                                            </svg>
+                                        }
+                                    </td> *@
+                                    <td class="px-4 py-2 border-b">
+                                        @if (item.hasPayed)
+                                        {
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" class="lucide lucide-circle-check text-green-500">
+                                                <circle cx="12" cy="12" r="10" />
+                                                <path d="m9 12 2 2 4-4" />
+                                            </svg>
+                                        }
+                                        else
+                                        {
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" class="lucide lucide-circle-x text-red-500">
+                                                <circle cx="12" cy="12" r="10" />
+                                                <path d="M9 9l6 6M15 9l-6 6" />
+                                            </svg>
+                                        }
+                                    </td>
+                                    <td class="px-4 py-2 border-b">
+                                        @if (item.Taken)
+                                        {
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" class="lucide lucide-circle-check text-green-500">
+                                                <circle cx="12" cy="12" r="10" />
+                                                <path d="m9 12 2 2 4-4" />
+                                            </svg>
+
+                                        }
+                                        else
+                                        {
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"
+                                                fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                                                stroke-linejoin="round" class="lucide lucide-circle-x text-red-500">
+                                                <circle cx="12" cy="12" r="10" />
+                                                <path d="M9 9l6 6M15 9l-6 6" />
+                                            </svg>
+
+                                        }
+                                    </td>
+
+                                    <td class="px-4 py-2 border-b flex space-x-3">
+                                        <!-- Edit Icon -->
+                                        <a asp-action="Edit" asp-route-id="@item.Id"
+                                            class="text-blue-500 hover:text-blue-700">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round"
+                                                class="lucide lucide-user-pen">
+                                                <path d="M11.5 15H7a4 4 0 0 0-4 4v2" />
+                                                <path
+                                                    d="M21.378 16.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z" />
+                                                <circle cx="10" cy="7" r="4" />
+                                            </svg>
+                                        </a>
+
+                                        <!-- Details Icon -->
+                                        <a asp-action="Details" asp-route-id="@item.Id"
+                                            class="text-yellow-500 hover:text-yellow-700">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round" class="feather feather-info">
+                                                <circle cx="12" cy="12" r="10"></circle>
+                                                <line x1="12" y1="16" x2="12" y2="12"></line>
+                                                <line x1="12" y1="8" x2="12" y2="8"></line>
+                                            </svg>
+                                        </a>
+
+                                        <!-- Delete Icon -->
+                                        <a asp-action="Delete" asp-route-id="@item.Id"
+                                            class="text-red-500 hover:text-red-700">
+                                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
+                                                viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
+                                                stroke-linecap="round" stroke-linejoin="round"
+                                                class="lucide lucide-trash-2">
+                                                <path d="M3 6h18" />
+                                                <path d="M19 6v14c0 1-1 2-2 2H7c-1 0-2-1-2-2V6" />
+                                                <path d="M8 6V4c0-1 1-2 2-2h4c1 0 2 1 2 2v2" />
+                                                <line x1="10" x2="10" y1="11" y2="17" />
+                                                <line x1="14" x2="14" y1="11" y2="17" />
+                                            </svg>
+                                        </a>
+                                    </td>
+
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+
+            <div class="bg-white shadow-lg rounded-2xl p-6 w-64">
+                <div class="flex flex-col items-center">
+                    <img src="~/image/image.png" alt="Photo client"
+                        class="w-24 h-24 rounded-full border-4 border-[#D46F4D] shadow-md mb-4">
+
+                    <div class="text-center space-y-2">
+                        <h2 class="text-[#D46F4D] font-bold text-xs">@ViewBag.UserConnected.Nom</h2>
+
+                        <div class="text-gray-600 space-y-1">
+                            <p>@ViewBag.UserConnected.Prenom</p>
+                            @* <p>@ViewBag.UserConnected.Adresse</p> *@
+                        </div>
+
+                        <div class="pt-4 border-t border-gray-200 mt-4 space-y-2">
+                            <p class="flex items-center justify-center gap-2 text-gray-600">
+                                <svg class="w-4 h-4 text-[#D46F4D]" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z" />
+                                </svg>
+                                +221 @ViewBag.UserConnected.Telephone
+                            </p>
+                            <p class="flex items-center text-xs justify-center gap-2 text-gray-600">
+                                <svg class="w-4 h-4 text-[#D46F4D]" fill="none" stroke="currentColor"
+                                    viewBox="0 0 24 24">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+                                        d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z" />
+                                </svg>
+                                @User.Identity.Name
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+
+
+        </div>
+    </div>
+</main>

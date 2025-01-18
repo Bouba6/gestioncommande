@@ -1,0 +1,90 @@
+@model gestioncommande.Models.Commande
+
+@{
+    Layout = "_layout";
+}
+
+<main class="sm:ml-64 overflow-hidden bg-[#]">
+    <div class="flex flex-col justify-center items-center">
+        <h1 class="text-3xl font-bold text-black">Ajout Commande</h1>
+        <div class="md:w-xgg sm:w-900 mx-auto p-6 border-t-[#FFD700] shadow-md border-2 rounded-md m-6 bg-[#171717]">
+            <form asp-action="AjouterProduit" method="post">
+                <div class="flex flex-row items-center space-x-4 mt-4 justify-between">
+                    <div class="">
+                        <label for="Produit" class="text-white">Produit</label>
+                        <select name="produitId" id="Produit"
+                            class="p-2 mt-3 border border w-full rounded-md focus:outline-none focus:border-[#FFD700] bg-[#171717] text-white">
+                            <option value="" class="bg-[#171717]">Select a libelle</option>
+                            @if (ViewBag.produits != null)
+                            {
+                                foreach (var produits in ViewBag.produits)
+                                {
+                                    <option value="@produits.Id" class="bg-[#171717]">@produits.Libelle</option>
+                                }
+                            }
+                        </select>
+                    </div>
+
+                    <div class="">
+                        <label for="Produit" class="text-white">Montant</label>
+                        <input type="number" name="qte"
+                            class="p-2 mt-3 border  w-full rounded-md focus:outline-none focus:border-[#FFD700] bg-[#171717] text-[#FFD700]">
+                    </div>
+
+                    <div class="mt-9">
+                        <button type="submit"
+                            class="bg-[#FFD700] hover:bg-yellow-600 text-[#171717] font-bold py-2 px-4 rounded">
+                            Ajouter
+                        </button>
+                    </div>
+                </div>
+            </form>
+            <form asp-action="Create1" method="post">
+                <div asp-validation-summary="ModelOnly" class="text-red-500"></div>
+                <div class="relative overflow-x-auto shadow-md sm:rounded-lg mt-4">
+                    <table class="w-full text-sm text-left rtl:text-right text-[#FFD700]">
+                        <thead class="text-xs uppercase bg-white text-[#171717]">
+                            <tr>
+                                <th scope="col" class="px-6 py-5">Id</th>
+                                <th scope="col" class="px-6 py-5">Libelle</th>
+                                <th scope="col" class="px-6 py-5">Montant</th>
+                                <th scope="col" class="px-6 py-5">Quantite</th>
+                                <th scope="col" class="px-6 py-5">Action</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var item in ViewBag.panier.detailCommande)
+                            {
+                                <tr class="border-b border-white">
+
+                                    <td class="px-6 py-4 font-medium whitespace-nowrap text-white">
+                                        @item.produit.Libelle
+                                    </td>
+
+                                    <td class="px-6 py-4 font-medium whitespace-nowrap text-white">
+                                        @item.Prix
+                                    </td>
+                                    <td class="px-6 py-4 font-medium whitespace-nowrap text-white">
+                                        @item.qteCommande
+                                    </td>
+                                    <td>
+                                        <a asp-action="Deletedetail" asp-route-id="@item.Id"
+                                            class="text-white hover:text-yellow-600">
+                                            Delete
+                                        </a>
+                                    </td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+                <div class="w-full flex justify-end mt-6">
+                    <button type="submit"
+                        class="bg-[#FFD700] hover:bg-yellow-600 text-[#171717] font-bold py-2 px-4 rounded">
+                        Save
+                    </button>
+                </div>
+            </form>
+        </div>
+    </div>
+</main>
