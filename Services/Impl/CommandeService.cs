@@ -47,7 +47,7 @@ public class CommandeService : ICommandeService
         {
             return commandes; // No filter, return the original IQueryable
         }
-        else if (status == "true")
+        else if (status == "Payer")
         {
             return commandes.Where(c => c.hasPayed == true); // Filter based on 'Taken'
         }

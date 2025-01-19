@@ -52,7 +52,7 @@ namespace gestioncommande.Controllers
 
 
         [HttpPost]
-        [Authorize(Roles = "CLIENT")]
+
         public async Task<IActionResult> ProduitDetails([FromBody] Produit model)
         {
 
@@ -92,12 +92,52 @@ namespace gestioncommande.Controllers
 
 
 
-        [Authorize(Roles = "RS")]
+        [Authorize(Roles = "CLIENT")]
         // GET: Produit/Create
         public IActionResult Create()
         {
             return View();
         }
+
+
+        [Authorize(Roles = "RS")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> Create(Produit produit)
+        {
+            ModelState.Remove("detailCommandes");
+            if (produit.image != null)
+            {
+                // Nouveau chemin pour l'image
+                var path = Path.Combine("wwwroot/image/produit", produit.image.FileName);
+                using (var stream = new FileStream(path, FileMode.Create))
+                {
+                    await produit.image.CopyToAsync(stream);
+                }
+
+                // Mise à jour du chemin de l'image
+                produit.FileName = $"/image/produit/{produit.image.FileName}";
+            }
+
+            if (ModelState.IsValid)
+            {
+                try
+                {
+                    _context.Add(produit);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (Exception ex)
+                {
+                    // Gestion des exceptions en cas d'erreur
+                    ModelState.AddModelError(string.Empty, "Une erreur s'est produite lors de l'ajout du produit.");
+                }
+            }
+
+            return View(produit);
+        }
+
+
 
         // POST: Produit/Create
         // To protect from overposting attacks, enable the specific properties you want to bind to.
@@ -105,33 +145,51 @@ namespace gestioncommande.Controllers
         [Authorize(Roles = "RS")]
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create(Produit produit)
+        public async Task<IActionResult> Edit(Produit produit)
         {
             ModelState.Remove("detailCommandes");
-            if (produit.image == null)
+            if (produit.image != null)
             {
-                ModelState.AddModelError("ImageDile", "The image file is required");
-            }
-            else
-            {
+                // Nouveau chemin pour l'image
                 var path = Path.Combine("wwwroot/image/produit", produit.image.FileName);
                 using (var stream = new FileStream(path, FileMode.Create))
                 {
-
                     produit.image.CopyTo(stream);
-
                 }
 
+                // Mise à jour du chemin de l'image
                 produit.FileName = $"/image/produit/{produit.image.FileName}";
             }
+            else
+            {
+                // Si aucune nouvelle image n'est ajoutée, garder l'image existante
+                ModelState.Remove("FileName");
+            }
+
             if (ModelState.IsValid)
             {
-                _context.Add(produit);
-                await _context.SaveChangesAsync();
-                return RedirectToAction(nameof(Index));
+                try
+                {
+                    _context.Update(produit);
+                    await _context.SaveChangesAsync();
+                    return RedirectToAction(nameof(Index));
+                }
+                catch (DbUpdateConcurrencyException)
+                {
+                    if (!ProduitExists(produit.Id))
+                    {
+                        return NotFound();
+                    }
+                    else
+                    {
+                        throw;
+                    }
+                }
             }
             return View(produit);
         }
+
+
 
         // [HttpPost]
         // public IActionResult AddToCart(int productId, int quantity)
@@ -182,44 +240,44 @@ namespace gestioncommande.Controllers
         // POST: Produit/Edit/5
         // To protect from overposting attacks, enable the specific properties you want to bind to.
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        [Authorize(Roles = "RS")]
-        public async Task<IActionResult> Edit(int id, Produit produit)
-        {
-            if (id != produit.Id)
-            {
-                return NotFound();
-            }
+        // [HttpPost]
+        // [ValidateAntiForgeryToken]
+        // [Authorize(Roles = "RS")]
+        // public async Task<IActionResult> Edit(int id, Produit produit)
+        // {
+        //     if (id != produit.Id)
+        //     {
+        //         return NotFound();
+        //     }
 
-            if (ModelState.IsValid)
-            {
-                try
-                {
-                    // Console.WriteLine("ç_èjhgfdghxj,;wxckjhgvfcvbn,;,nbvcxn,;");
-                    // Console.WriteLine(produit.FileName);
-                    // Console.WriteLine(produit.image.FileName);
-                    // Console.WriteLine("ç_èjhgfdghxj,;wxckjhgvfcvbn,;,nbvcxn,;");
-                    // var image = $"/image/produit/{produit.image.FileName}";
-                    // produit.FileName = image;
-                    _context.Update(produit);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ProduitExists(produit.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
-                return RedirectToAction(nameof(Index));
-            }
-            return View(produit);
-        }
+        //     if (ModelState.IsValid)
+        //     {
+        //         try
+        //         {
+        //             // Console.WriteLine("ç_èjhgfdghxj,;wxckjhgvfcvbn,;,nbvcxn,;");
+        //             // Console.WriteLine(produit.FileName);
+        //             // Console.WriteLine(produit.image.FileName);
+        //             // Console.WriteLine("ç_èjhgfdghxj,;wxckjhgvfcvbn,;,nbvcxn,;");
+        //             // var image = $"/image/produit/{produit.image.FileName}";
+        //             // produit.FileName = image;
+        //             _context.Update(produit);
+        //             await _context.SaveChangesAsync();
+        //         }
+        //         catch (DbUpdateConcurrencyException)
+        //         {
+        //             if (!ProduitExists(produit.Id))
+        //             {
+        //                 return NotFound();
+        //             }
+        //             else
+        //             {
+        //                 throw;
+        //             }
+        //         }
+        //         return RedirectToAction(nameof(Index));
+        //     }
+        //     return View(produit);
+        // }
 
         // GET: Produit/Delete/5
         [Authorize(Roles = "RS")]

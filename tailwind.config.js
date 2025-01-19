@@ -24,7 +24,8 @@ module.exports = {
         'navbar': '#edebeb',
         'diagne': '#f4a261',
         'darkintimenu': '#D46F4D',
-        'logout': '#BD3100'
+        'logout': '#BD3100' ?
+          'darkinti-dark' : '#BC5E3D'
 
       },
     },

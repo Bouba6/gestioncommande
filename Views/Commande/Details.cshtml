@@ -325,7 +325,7 @@
                                         <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                                             d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                                     </svg>
-                                    Pris en charge
+                                    En charge
                                 </span>
                             }
                             else
@@ -402,9 +402,9 @@
             @foreach (var item in ViewBag.produits)
             {
                 <div
-                    class="w-full max-w-sm bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
+                    class="w-full   max-w-sm bg-white rounded-2xl shadow-lg hover:shadow-xl transition-shadow duration-300 overflow-hidden">
                     <!-- Image du produit -->
-                    <div class="relative h-64 overflow-hidden">
+                    <div class="relative aspect-w-1 aspect-h-1">
                         <img src="@item.produit.FileName" alt="@item.produit.Libelle"
                             class="w-full h-full  object-cover transition-transform duration-300 hover:scale-105"
                             onerror="this.src='/images/placeholder.jpg'" />

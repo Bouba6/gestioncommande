@@ -6,70 +6,60 @@
 
 <main class="">
     <div class="container mx-auto p-4">
-        <div class="flex flex-row gap-4">
-            <div class="w-full">
-                <div class="w-full flex flex-row justify-between items-center">
-                    <div class="flex flex-row justify-evenly items-center gap-4">
-                        <div>
-                            <form method="get" asp-action="Index"
-                                class="m-2 p-2 bg-gray-100 rounded shadow flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
-                                <!-- Label -->
+        <div class="flex flex-col justify-center items-center  sm:flex-row gap-4">
+            <div class="w-full ">
+                <div class="w-full flex flex-row flex-wrap justify-start items-cente mb-2 gap-2 px-2">
+                    <!-- Filtre par Date -->
+                    <div class="flex-shrink-0">
+                        <form method="get" asp-action="Index" class="bg-gray-100 rounded shadow p-2">
+                            <div class="flex flex-row items-center gap-2">
                                 <label for="StatusFilter"
-                                    class="text-gray-600 font-medium sm:whitespace-nowrap text-sm">
-                                    Filtrer par Date :
+                                    class="text-gray-600 font-medium text-xs sm:text-sm whitespace-nowrap">
+                                    Date :
                                 </label>
-
-                                <!-- Input -->
                                 <input type="date" id="StatusFilter" name="searchTerm2"
-                                    class="border border-gray-300 rounded p-1 w-48 sm:w-auto text-sm focus:outline-none focus:ring-1 focus:ring-blue-400 focus:border-blue-400"
-                                    placeholder="Search" />
-                            </form>
-                        </div>
-                        <div class="border-none">
+                                    class="w-16 sm:w-32 border border-gray-300 rounded p-1 text-xs sm:text-sm focus:outline-none focus:ring-1 focus:ring-blue-400 focus:border-blue-400" />
+                            </div>
+                        </form>
+                    </div>
 
+                    <!-- Filtre par état -->
+                    <div class="flex-shrink-0">
+                        <form asp-action="Index" method="get" class="bg-gray-100 rounded shadow p-2">
+                            <div class="flex flex-row items-center gap-2">
+                                <label for="filter1"
+                                    class="text-gray-600 font-medium text-xs sm:text-sm whitespace-nowrap">
+                                    État :
+                                </label>
+                                <select id="filter1" name="filter1"
+                                    class="w-12 sm:w-32 border border-gray-300 rounded p-1 text-xs sm:text-sm focus:outline-none focus:ring-1 focus:ring-orange1 focus:border-orange1"
+                                    onchange="this.form.submit()">
+                                    <option value="" selected="@(ViewBag.searchTerm1 == "tous")">Tous</option>
+                                    <option value="Payer" selected="@(ViewBag.searchTerm1 == "Payer")">Payer</option>
+                                    <option value="NonPayer" selected="@(ViewBag.searchTerm1 == "NonPyer")">Non Payer
+                                    </option>
+                                </select>
+                            </div>
+                        </form>
+                    </div>
 
-                            <form asp-action="Index" method="get"
-                                class="m-2 p-2 bg-gray-100 rounded shadow flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
-                                <div class="inline-flex items-center">
-                                    <label for="filter1"
-                                        class="text-gray-600 font-medium sm:whitespace-nowrap text-sm mr-3">
-                                        Filtrer par état
-                                    </label>
-                                    <select id="filter1" name="filter1"
-                                        class="form-control border border-gray-300 rounded p-1 w-48 sm:w-auto text-sm focus:outline-none focus:ring-1 focus:ring-orange1 focus:border-orange1"
-                                        onchange="this.form.submit()">
-                                        <option value="tous" selected="@(ViewBag.searchTerm1 == "tous")">Tout</option>
-                                        <option value="true" selected="@(ViewBag.searchTerm1 == "true")">payer
-                                        </option>
-                                        <option value="false" selected="@(ViewBag.searchTerm1 == "false")">Non
-                                            Payer</option>
-                                    </select>
-                                </div>
-                            </form>
-
-
-
-
-
-                        </div>
-                        <div>
-                            <form asp-action="Index" method="get"
-                                class="m-2 p-2 bg-gray-100 rounded shadow flex flex-col sm:flex-row items-start sm:items-center space-y-2 sm:space-y-0 sm:space-x-2">
-                                <div class="inline-flex items-center">
-                                    <label for="filter" class="text-gray-700 text-xs font-medium mr-3">
-                                        Filtrer par Taken
-                                    </label>
-                                    <select id="filter" name="filter"
-                                        class="form-control border border border-gray-300 rounded p-1 w-48 sm:w-auto text-sm focus:outline-none focus:ring-1 focus:ring-orange1 focus:border-orange1"
-                                        onchange="this.form.submit()">
-                                        <option value="tous" selected="@(ViewBag.searchTerm == "tous")">Tout</option>
-                                        <option value="false" selected="@(ViewBag.searchTerm == "false")">Non Taken
-                                        </option>
-                                        <option value="true" selected="@(ViewBag.searchTerm == "true")">Taken</option>
-                                    </select>
-                                </div>
-                            </form>
-                        </div>
+                    <!-- Filtre par Taken -->
+                    <div class="flex-shrink-0">
+                        <form asp-action="Index" method="get" class="bg-gray-100 rounded shadow p-2">
+                            <div class="flex flex-row items-center gap-2">
+                                <label for="filter"
+                                    class="text-gray-600 font-medium text-xs sm:text-sm whitespace-nowrap">
+                                    Taken :
+                                </label>
+                                <select id="filter" name="filter"
+                                    class="w-12 sm:w-32 border border-gray-300 rounded p-1 text-xs sm:text-sm focus:outline-none focus:ring-1 focus:ring-orange1 focus:border-orange1"
+                                    onchange="this.form.submit()">
+                                    <option value="tous" selected="@(ViewBag.searchTerm == "tous")">Tout</option>
+                                    <option value="false" selected="@(ViewBag.searchTerm == "false")">Non Taken</option>
+                                    <option value="true" selected="@(ViewBag.searchTerm == "true")">Taken</option>
+                                </select>
+                            </div>
+                        </form>
                     </div>
                 </div>
                 <div class="overflow-x-auto bg-text rounded-lg shadow-md">
@@ -82,13 +72,13 @@
                                 @* <th class="px-4 py-2 border-b">Livreur</th> *@
                                 <th class="px-4 py-2 border-b">Payé</th>
                                 <th class="px-4 py-2 border-b">Pris</th>
-                                <th class="px-4 py-2 border-b">Actions</th>
+                                <th class="px-4 py-2 border-b text-center">Actions</th>
                             </tr>
                         </thead>
                         <tbody>
                             @foreach (var item in Model)
                             {
-                                <tr class="hover:bg-gray-50 bg-white text-darkinti">
+                                <tr class="hover:bg-gray-50 bg-white text-gray-600">
                                     <td class="px-4 py-2 border-b">@Html.DisplayFor(modelItem => item.DateCommande)</td>
                                     <td class="px-4 py-2 border-b">@Html.DisplayFor(modelItem => item.PrixTotal)</td>
                                     <td class="px-4 py-2 border-b">@Html.DisplayFor(modelItem => item.Client.users.Nom)</td>
@@ -151,9 +141,9 @@
                                         }
                                     </td>
 
-                                    <td class="px-4 py-2 border-b flex space-x-3">
+                                    <td class="px-4 py-2 border-b flex justify-center">
                                         <!-- Edit Icon -->
-                                        <a asp-action="Edit" asp-route-id="@item.Id"
+                                        @* <a asp-action="Edit" asp-route-id="@item.Id"
                                             class="text-blue-500 hover:text-blue-700">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -164,7 +154,7 @@
                                                     d="M21.378 16.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z" />
                                                 <circle cx="10" cy="7" r="4" />
                                             </svg>
-                                        </a>
+                                        </a> *@
 
                                         <!-- Details Icon -->
                                         <a asp-action="Details" asp-route-id="@item.Id"
@@ -179,7 +169,7 @@
                                         </a>
 
                                         <!-- Delete Icon -->
-                                        <a asp-action="Delete" asp-route-id="@item.Id"
+                                        @* <a asp-action="Delete" asp-route-id="@item.Id"
                                             class="text-red-500 hover:text-red-700">
                                             <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24"
                                                 viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"
@@ -191,7 +181,7 @@
                                                 <line x1="10" x2="10" y1="11" y2="17" />
                                                 <line x1="14" x2="14" y1="11" y2="17" />
                                             </svg>
-                                        </a>
+                                        </a> *@
                                     </td>
 
                                 </tr>
@@ -212,7 +202,7 @@
 
                         <div class="text-gray-600 space-y-1">
                             <p>@ViewBag.UserConnected.Prenom</p>
-                            @* <p>@ViewBag.UserConnected.Adresse</p> *@
+                            <p>@ViewBag.UserConnected.Adresse</p>
                         </div>
 
                         <div class="pt-4 border-t border-gray-200 mt-4 space-y-2">

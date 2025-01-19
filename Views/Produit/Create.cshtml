@@ -1,64 +1,124 @@
 @model gestioncommande.Models.Produit
 
-@{
-    Layout = null;
-}
-
 <!DOCTYPE html>
-
-<html>
+<html class="bg-gray-50">
 
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Create</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Ajouter un Produit</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+
+
 </head>
 
-<body>
+<body class="min-h-screen p-4 md:p-0 bg-white">
+    <div class="max-w-4xl mx-auto mt-8 mb-16">
+        <!-- En-tête avec navigation -->
+        <div class="mb-8 flex items-center justify-between">
+            <h1 class="text-3xl font-bold text-gray-900">Ajouter un Produit</h1>
+            <a href="@Url.Action("Index")"
+                class="flex items-center text-darkinti hover:text-darkinti-dark transition-colors">
+                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" viewBox="0 0 20 20" fill="currentColor">
+                    <path fill-rule="evenodd"
+                        d="M10.707 3.293a1 1 0 010 1.414L6.414 9H17a1 1 0 110 2H6.414l4.293 4.293a1 1 0 11-1.414 1.414l-6-6a1 1 0 010-1.414l6-6a1 1 0 011.414 0z"
+                        clip-rule="evenodd" />
+                </svg>
+                Retour à la liste
+            </a>
+        </div>
 
-    <h4>Produit</h4>
-    <hr />
-    <div class="row">
-        <div class="col-md-4">
-            <form asp-action="Create" enctype="multipart/form-data">
-                <div asp-validation-summary="All" class="text-danger"></div>
-                <div class="form-group">
-                    <label asp-for="Libelle" class="control-label"></label>
-                    <input asp-for="Libelle" class="form-control" />
-                    <span asp-validation-for="Libelle" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Prix" class="control-label"></label>
-                    <input asp-for="Prix" class="form-control" />
-                    <span asp-validation-for="Prix" class="text-danger"></span>
-                </div>
-                <div class="form-group">
-                    <label asp-for="Quantite" class="control-label"></label>
-                    <input asp-for="Quantite" class="form-control" />
-                    <span asp-validation-for="Quantite" class="text-danger"></span>
-                </div>
+        <!-- Card du formulaire -->
+        <div class="bg-white rounded-xl shadow-lg overflow-hidden border border-gray-100">
+            <div class="p-8">
+                <form asp-action="Create" enctype="multipart/form-data" class="space-y-6" method="post">
+                    <div asp-validation-summary="All"></div>
 
-                <div class="form-group">
-                    <label asp-for="QteSeuil" class="control-label"></label>
-                    <input asp-for="QteSeuil" class="form-control" />
-                    <span asp-validation-for="QteSeuil" class="text-danger"></span>
-                </div>
-                <div>
-                    <label asp-for="image" class="control-label"></label>
-                    <input type="File" asp-for="image">
-                    <span asp-validation-for="image" class="text-danger"></span>
-                </div>
+                    <!-- Libellé -->
+                    <div class="grid gap-2">
+                        <label asp-for="Libelle" class="text-sm font-medium text-gray-700">Nom du produit</label>
+                        <input asp-for="Libelle"
+                            class="w-full px-4 py-2 rounded-lg border focus:ring-2 focus:ring-darkinti focus:border-darkinti transition-colors"
+                            placeholder="Entrez le nom du produit" />
+                        <span asp-validation-for="Libelle" class="text-sm text-red-600"></span>
+                    </div>
 
-                <div class="form-group">
-                    <input type="submit" value="Create" class="btn btn-primary" />
-                </div>
-            </form>
+                    <!-- Prix et Quantité sur la même ligne -->
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div class="grid gap-2">
+                            <label asp-for="Prix" class="text-sm font-medium text-gray-700">Prix</label>
+                            <div class="relative">
+                                <input asp-for="Prix"
+                                    class="w-full pl-8 pr-4 py-2 rounded-lg border focus:ring-2 focus:ring-darkinti focus:border-darkinti transition-colors"
+                                    placeholder="0.00" />
+                                <span class="absolute left-3 top-2.5 text-gray-500">€</span>
+                            </div>
+                            <span asp-validation-for="Prix" class="text-sm text-red-600"></span>
+                        </div>
+
+                        <div class="grid gap-2">
+                            <label asp-for="Quantite" class="text-sm font-medium text-gray-700">Quantité</label>
+                            <input asp-for="Quantite" type="number"
+                                class="w-full px-4 py-2 rounded-lg border focus:ring-2 focus:ring-darkinti focus:border-darkinti transition-colors"
+                                placeholder="0" />
+                            <span asp-validation-for="Quantite" class="text-sm text-red-600"></span>
+                        </div>
+                    </div>
+
+                    <!-- Quantité Seuil -->
+                    <div class="grid gap-2">
+                        <label asp-for="QteSeuil" class="text-sm font-medium text-gray-700">Quantité Seuil</label>
+                        <input asp-for="QteSeuil" type="number"
+                            class="w-full px-4 py-2 rounded-lg border focus:ring-2 focus:ring-darkinti focus:border-darkinti transition-colors"
+                            placeholder="Seuil minimal" />
+                        <span asp-validation-for="QteSeuil" class="text-sm text-red-600"></span>
+                    </div>
+
+                    <!-- Upload d'image -->
+                    <div class="grid gap-2">
+                        <label asp-for="image" class="text-sm font-medium text-gray-700">Image du produit</label>
+                        <div
+                            class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-gray-200 border-dashed rounded-lg hover:border-darkinti transition-colors">
+                            <div class="space-y-1 text-center">
+                                <svg class="mx-auto h-12 w-12 text-gray-400" stroke="currentColor" fill="none"
+                                    viewBox="0 0 48 48">
+                                    <path
+                                        d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02"
+                                        stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                </svg>
+                                <div class="flex text-sm text-gray-600">
+                                    <label
+                                        class="relative cursor-pointer bg-white rounded-md font-medium text-darkinti hover:text-darkinti-dark focus-within:outline-none">
+                                        <span>Télécharger une image</span>
+                                        <input asp-for="image" type="file" class="sr-only" />
+                                    </label>
+                                    <p class="pl-1">ou glisser-déposer</p>
+                                </div>
+                                <p class="text-xs text-gray-500">PNG, JPG jusqu'à 10MB</p>
+                            </div>
+                        </div>
+                        <span asp-validation-for="image" class="text-sm text-red-600"></span>
+                    </div>
+
+                    <!-- Boutons d'action -->
+                    <div class="flex items-center space-x-4 pt-4">
+                        <button type="submit"
+                            class="px-6 py-3 bg-darkinti text-white font-medium rounded-lg hover:bg-darkinti-dark focus:outline-none focus:ring-2 focus:ring-darkinti focus:ring-offset-2 transition-colors">
+                            Créer le produit
+                        </button>
+                        <a asp-action="Index"
+                            class="px-6 py-3 bg-gray-100 text-gray-700 font-medium rounded-lg hover:bg-gray-200 focus:outline-none focus:ring-2 focus:ring-gray-500 focus:ring-offset-2 transition-colors">
+                            Annuler
+                        </a>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
 
-    <div>
-        <a asp-action="Index">Back to List</a>
-    </div>
-
+    <!-- Scripts de validation -->
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/jquery-validation/dist/jquery.validate.min.js"></script>
+    <script src="~/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.min.js"></script>
 </body>
 
 </html>

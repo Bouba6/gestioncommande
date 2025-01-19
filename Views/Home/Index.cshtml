@@ -23,7 +23,7 @@
         <img src="~/image/bnnerimage.jpg" alt="Banner" class="w-full h-full object-cover">
         <div class="absolute inset-0 bg-black/40"></div>
         <div class="absolute inset-0 flex flex-col items-center justify-center text-white">
-            <h1 class="text-6xl font-bold mb-4">Booba Boutique</h1>
+            <h1 class="text-4xl sm:text-6xl  font-bold mb-4">Booba Boutique</h1>
             <p class="text-xl mb-8">Découvrez notre collection unique</p>
             <a href="/Produit/Index"
                 class="bg-[#D46F4D] text-white px-8 py-3 rounded-full hover:bg-[#D46F4D]/90 transition">
@@ -33,40 +33,64 @@
     </div>
 
     <!-- Features Section -->
-    <div class="container mx-auto px-4 py-16 grid grid-cols-3 gap-8">
-        <div class="text-center">
-            <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-[#D46F4D]/20 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#D46F4D]" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
+    <div class="container mx-auto px-4 pt-4 flex flex-col space-y-4 sm:space-y-0 sm:flex-row justify-between sm:gap-8">
+        <!-- Prix Compétitifs -->
+        <div
+            class="w-full p-6 flex flex-row items-start sm:flex-col sm:items-center bg-red-10 rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:bg-red-100">
+            <div
+                class="w-16 h-16 shrink-0 mr-4 sm:mr-0 sm:mb-4 rounded-full bg-[#D46F4D]/20 flex items-center justify-center group-hover:bg-[#D46F4D]/30 transition-colors duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                    class="h-8 w-8 text-[#D46F4D] transition-transform duration-300 ease-in-out hover:scale-110"
+                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                 </svg>
             </div>
-            <h3 class="text-xl text-gray-600  font-bold mb-2">Prix Compétitifs</h3>
-            <p class="text-gray-600">Les meilleurs prix pour nos clients</p>
+            <div class="flex-1 sm:text-center">
+                <h3
+                    class="text-xl text-gray-600 font-bold mb-2 group-hover:text-[#D46F4D] transition-colors duration-300">
+                    Prix Compétitifs</h3>
+                <p class="text-lg text-gray-600 group-hover:text-gray-700">Les meilleurs prix pour nos clients</p>
+            </div>
         </div>
 
-        <div class="text-center">
-            <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-[#D46F4D]/20 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#D46F4D]" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
+        <!-- Qualité Garantie -->
+        <div
+            class="w-full p-6 flex flex-row items-start sm:flex-col sm:items-center bg-red-10 rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:bg-red-100">
+            <div
+                class="w-16 h-16 shrink-0 mr-4 sm:mr-0 sm:mb-4 rounded-full bg-[#D46F4D]/20 flex items-center justify-center group-hover:bg-[#D46F4D]/30 transition-colors duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                    class="h-8 w-8 text-[#D46F4D] transition-transform duration-300 ease-in-out hover:scale-110"
+                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7" />
                 </svg>
             </div>
-            <h3 class="text-xl text-gray-600  font-bold mb-2">Qualité Garantie</h3>
-            <p class="text-gray-600">Des produits soigneusement sélectionnés</p>
+            <div class="flex-1 sm:text-center">
+                <h3
+                    class="text-xl text-gray-600 font-bold mb-2 group-hover:text-[#D46F4D] transition-colors duration-300">
+                    Qualité Garantie</h3>
+                <p class="text-lg text-gray-600 group-hover:text-gray-700">Des produits soigneusement sélectionnés</p>
+            </div>
         </div>
 
-        <div class="text-center">
-            <div class="w-16 h-16 mx-auto mb-4 rounded-full bg-[#D46F4D]/20 flex items-center justify-center">
-                <svg xmlns="http://www.w3.org/2000/svg" class="h-8 w-8 text-[#D46F4D]" fill="none" viewBox="0 0 24 24"
-                    stroke="currentColor">
+        <!-- Livraison Rapide -->
+        <div
+            class="w-full p-6 flex flex-row items-start sm:flex-col sm:items-center bg-red-10 rounded-lg shadow-sm hover:shadow-lg transition-all duration-300 ease-in-out transform hover:-translate-y-1 hover:bg-red-100">
+            <div
+                class="w-16 h-16 shrink-0 mr-4 sm:mr-0 sm:mb-4 rounded-full bg-[#D46F4D]/20 flex items-center justify-center group-hover:bg-[#D46F4D]/30 transition-colors duration-300">
+                <svg xmlns="http://www.w3.org/2000/svg"
+                    class="h-8 w-8 text-[#D46F4D] transition-transform duration-300 ease-in-out hover:scale-110"
+                    fill="none" viewBox="0 0 24 24" stroke="currentColor">
                     <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
                         d="M20 7l-8-4-8 4m16 0l-8 4m8-4v10l-8 4m0-10L4 7m8 4v10M4 7v10l8 4" />
                 </svg>
             </div>
-            <h3 class="text-xl text-gray-600  font-bold mb-2">Livraison Rapide</h3>
-            <p class="text-gray-600">Livraison dans toute la ville</p>
+            <div class="flex-1 sm:text-center">
+                <h3
+                    class="text-xl text-gray-600 font-bold mb-2 group-hover:text-[#D46F4D] transition-colors duration-300">
+                    Livraison Rapide</h3>
+                <p class="text-lg text-gray-600 group-hover:text-gray-700">Livraison dans toute la ville</p>
+            </div>
         </div>
     </div>
 

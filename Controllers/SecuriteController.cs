@@ -19,8 +19,13 @@ namespace gestioncommande.Controllers
             _context = context;
         }
 
+
         public async Task<IActionResult> Error404()
         {
+            if (User.Identity.IsAuthenticated == false)
+            {
+                return RedirectToAction("Login", "Connexion");
+            }
             return View();
         }
     }

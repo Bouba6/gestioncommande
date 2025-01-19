@@ -7,7 +7,8 @@
 <main class="p-6 sm:ml-52 bg-white  rounded-lg">
     <h1 class="text-2xl font-bold mb-6 text-gray-800 flex justify-center">Edit Product</h1>
 
-    <form asp-action="Edit" class="max-w-2xl mx-auto bg-white p-8 rounded-xl shadow-lg space-y-8">
+    <form asp-action="Edit" class="max-w-2xl mx-auto bg-white p-8 rounded-xl shadow-lg space-y-8"
+        enctype="multipart/form-data">
         <!-- Validation Summary -->
         <div asp-validation-summary="All" class="p-4 bg-red-50 text-red-600 rounded-lg mb-6"></div>
 
@@ -50,18 +51,17 @@
             <div class="h-full bg-red-50">
                 <!-- Image Upload -->
                 <div class="form-group h-auto w-full">
-                    @* <label asp-for="FileName" class="block text-sm font-semibold text-gray-700 mb-2 w-full">
-                        Image
-                    </label> *@
+                    <label asp-for="image" class="block text-sm font-semibold text-gray-700 mb-2">
+                        Product Image
+                    </label>
                     <div
-                        class="flex flex-col items-center p-4 border-2  border-dashed border-gray-300 rounded-lg hover:border-blue-500 transition duration-150 w-full">
-                        @* <input asp-for="FileName" type="file" id="imageUpload" accept="image/*"
-                            class="w-full cursor-pointer" /> *@
+                        class="flex flex-col items-center p-4 border-2 border-dashed border-gray-300 rounded-lg hover:border-blue-500 transition duration-150 w-full">
+                        <!-- Image Preview -->
                         <img id="imagePreview" src="@Model.FileName" alt="Product Image"
                             class="mt-4 w-12 h-16 object-cover rounded-lg shadow-md" />
+                        <input asp-for="image" type="file" class="mt-4 w-full" />
                     </div>
-
-                    @* <span asp-validation-for="FileName" class="mt-1 text-red-500 text-sm block w-full"></span> *@
+                    <span asp-validation-for="image" class="mt-1 text-red-500 text-sm block"></span>
                 </div>
 
 

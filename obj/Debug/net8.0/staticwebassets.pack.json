@@ -21,12 +21,24 @@
       "PackagePath": "staticwebassets\\favicon.ico"
     },
     {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\image\\Banner2.jpeg",
+      "PackagePath": "staticwebassets\\image\\Banner2.jpeg"
+    },
+    {
       "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\image\\Logo.png",
       "PackagePath": "staticwebassets\\image\\Logo.png"
     },
     {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\image\\MyLogo.png",
+      "PackagePath": "staticwebassets\\image\\MyLogo.png"
+    },
+    {
       "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\image\\banner.jpg",
       "PackagePath": "staticwebassets\\image\\banner.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\image\\banner1.jpeg",
+      "PackagePath": "staticwebassets\\image\\banner1.jpeg"
     },
     {
       "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\image\\banque.png",
@@ -61,8 +73,24 @@
       "PackagePath": "staticwebassets\\image\\produit\\bonnetbeige.png"
     },
     {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\image\\produit\\crocs.jpg",
+      "PackagePath": "staticwebassets\\image\\produit\\crocs.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\image\\produit\\ensembleagain.jpg",
+      "PackagePath": "staticwebassets\\image\\produit\\ensembleagain.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\image\\produit\\ensemblejean.jpg",
+      "PackagePath": "staticwebassets\\image\\produit\\ensemblejean.jpg"
+    },
+    {
       "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\image\\produit\\groupeDeSac (12).png",
       "PackagePath": "staticwebassets\\image\\produit\\groupeDeSac (12).png"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\image\\produit\\homme.png",
+      "PackagePath": "staticwebassets\\image\\produit\\homme.png"
     },
     {
       "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\image\\produit\\nounours.png",
@@ -73,6 +101,14 @@
       "PackagePath": "staticwebassets\\image\\produit\\packet (4).png"
     },
     {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\image\\produit\\packet (5).png",
+      "PackagePath": "staticwebassets\\image\\produit\\packet (5).png"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\image\\produit\\pantalon.jpg",
+      "PackagePath": "staticwebassets\\image\\produit\\pantalon.jpg"
+    },
+    {
       "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\image\\produit\\pantalontrio (6).png",
       "PackagePath": "staticwebassets\\image\\produit\\pantalontrio (6).png"
     },
@@ -81,8 +117,28 @@
       "PackagePath": "staticwebassets\\image\\produit\\pantalontrio (8).png"
     },
     {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\image\\produit\\pants.jpg",
+      "PackagePath": "staticwebassets\\image\\produit\\pants.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\image\\produit\\pull.jpg",
+      "PackagePath": "staticwebassets\\image\\produit\\pull.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\image\\produit\\shirt.jpg",
+      "PackagePath": "staticwebassets\\image\\produit\\shirt.jpg"
+    },
+    {
       "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\image\\produit\\sousvetementrose.png",
       "PackagePath": "staticwebassets\\image\\produit\\sousvetementrose.png"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\image\\produit\\upper.jpg",
+      "PackagePath": "staticwebassets\\image\\produit\\upper.jpg"
+    },
+    {
+      "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\image\\produit\\upper1.jpg",
+      "PackagePath": "staticwebassets\\image\\produit\\upper1.jpg"
     },
     {
       "Id": "C:\\Users\\Booba\\Documents\\GestionCommandeC#\\gestioncommande\\wwwroot\\image\\wav.png",

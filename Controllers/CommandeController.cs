@@ -10,6 +10,7 @@ using gestioncommande.Helpers;
 using gestioncommande.Enum;
 using gestioncommande.Services.Impl;
 using Microsoft.AspNetCore.Authorization;
+using System.Data.Common;
 
 namespace gestioncommande.Controllers
 {
@@ -103,9 +104,6 @@ namespace gestioncommande.Controllers
             }
             ViewBag.UserConnected = userConnected;
 
-
-
-
             // Load initial query with relations
             IQueryable<Commande> applicationDbContext = _context.commande
                 .Include(c => c.Client)
@@ -121,19 +119,23 @@ namespace gestioncommande.Controllers
             string searchTerm = Request.Query["filter"]; // For checkbox
             string searchTerm1 = Request.Query["filter1"]; // For dropdown
 
+
+
             // Set default filter values if none provided
             string filterTaken = searchTerm ?? "tous";
             string filterEtat = searchTerm1 ?? "tous";
 
-
+            Console.WriteLine("uysxdcfgvbhjn");
+            Console.WriteLine(filterTaken);
+            Console.WriteLine("uysxdcfgvbhjn,kljhgfdxswxfcghbjnk,ljhbgvfcdxfcghbjnk");
 
             // Apply filters directly on the IQueryable
-            if (filterTaken != null)
+            if (!string.IsNullOrEmpty(filterTaken) && filterTaken != "tous")
             {
                 applicationDbContext = _commandeService.FindByTaken(applicationDbContext, filterTaken);
             }
 
-            if (filterEtat != null)
+            if (!string.IsNullOrEmpty(filterEtat) && filterEtat != "tous")
             {
                 applicationDbContext = _commandeService.FindByStatus(applicationDbContext, filterEtat);
             }
