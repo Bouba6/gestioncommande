@@ -15,10 +15,15 @@
             const burgerButton = document.getElementById('burger-menu-button');
             const mobileMenu = document.getElementById('mobile-menu');
 
+            // Fonction pour mettre à jour tous les compteurs
+            window.updateCartCount = function (count) {
+                document.querySelectorAll('.cart-count').forEach(counter => {
+                    counter.textContent = count;
+                });
+            };
+
             burgerButton.addEventListener('click', function () {
-                // Toggle the menu
                 mobileMenu.classList.toggle('hidden');
-                // Toggle the burger/close icon
                 const isOpen = !mobileMenu.classList.contains('hidden');
                 burgerButton.innerHTML = isOpen
                     ? '<svg class="h-6 w-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor"><path d="M6 18L18 6M6 6l12 12"></path></svg>'
@@ -47,14 +52,37 @@
                         <img src="~/image/MyLogo.png" alt="" class="object-contain max-w-full h-auto">
                     </div>
 
-                    <!-- Burger Menu Button -->
-                    <button id="burger-menu-button"
-                        class="md:hidden flex items-center p-2 rounded-md hover:bg-gray-100 text-gray-700">
-                        <svg class="h-6 w-6" fill="none" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2"
-                            viewBox="0 0 24 24" stroke="currentColor">
-                            <path d="M4 6h16M4 12h16M4 18h16"></path>
-                        </svg>
-                    </button>
+                    <!-- Mobile Actions (Burger + Cart) -->
+                    <div class="flex items-center space-x-4 md:hidden">
+                        @if (User.IsInRole("RS") == false)
+                        {
+                            <!-- Mobile Cart -->
+                            <div class="relative">
+                                <a asp-controller="Achat" asp-action="index" class="text-gray-700 hover:text-[#D46F4D]">
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none"
+                                        stroke="currentColor" stroke-width="2">
+                                        <circle cx="8" cy="21" r="1" />
+                                        <circle cx="19" cy="21" r="1" />
+                                        <path
+                                            d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
+                                    </svg>
+                                    <span
+                                        class="absolute cart-count -top-2 -right-3 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
+                                        @itemCount
+                                    </span>
+                                </a>
+                            </div>
+                        }
+
+                        <!-- Burger Menu Button -->
+                        <button id="burger-menu-button"
+                            class="flex items-center p-2 rounded-md hover:bg-gray-100 text-gray-700">
+                            <svg class="h-6 w-6" fill="none" strokeLinecap="round" strokeLinejoin="round"
+                                strokeWidth="2" viewBox="0 0 24 24" stroke="currentColor">
+                                <path d="M4 6h16M4 12h16M4 18h16"></path>
+                            </svg>
+                        </button>
+                    </div>
 
                     <!-- Navigation Links - Desktop -->
                     <div class="hidden md:flex items-center space-x-8">
@@ -83,9 +111,7 @@
                                             d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
                                     </svg>
                                     <span
-                                        class="absolute -top-2 -right-3 bg-red-500 text-white text-xs text-red-500 font-bold rounded-full h-5 w-5 flex items-center justify-center"
-                                        id="cartItemCount">
-
+                                        class="absolute cart-count -top-2 -right-3 bg-red-500 text-white text-xs font-bold rounded-full h-5 w-5 flex items-center justify-center">
                                         @itemCount
                                     </span>
                                 </a>
@@ -116,29 +142,6 @@
                         <a asp-controller="Propos" asp-action="Index"
                             class="text-gray-700 hover:text-[#D46F4D] px-3 py-2 rounded-md font-medium">A Propos</a>
 
-                        @if (User.IsInRole("RS") == false)
-                        {
-                            <!-- Mobile Cart -->
-                            <div class="relative inline-block">
-                                <a asp-controller="Achat" asp-action="index"
-                                    class="text-gray-700 hover:text-[#D46F4D] px-3 py-2 ">
-                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 inline" fill="none"
-                                        stroke="currentColor" stroke-width="2">
-                                        <circle cx="8" cy="21" r="1" />
-                                        <circle cx="19" cy="21" r="1" />
-                                        <path
-                                            d="M2.05 2.05h2l2.66 12.42a2 2 0 0 0 2 1.58h9.78a2 2 0 0 0 1.95-1.57l1.65-7.43H5.12" />
-                                    </svg>
-                                    <span
-                                        class="absolute  bg-red-500 text-white text-center text-xs text-red-500 font-bold rounded-full h-5 w-5"
-                                        id="cartItemCount">
-
-                                        @itemCount
-                                    </span>
-                                </a>
-                            </div>
-                        }
-
                         <!-- Mobile Profile/Logout -->
                         <div class="flex items-center justify-between px-3 pt-4 border-t border-gray-200">
                             <img src="~/image/image.png" alt="Profile"
@@ -153,7 +156,6 @@
             </div>
         </nav>
     </header>
-
     <div class="container mx-auto p-4">
         <main role="main">
             @RenderBody()

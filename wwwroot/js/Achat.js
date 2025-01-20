@@ -55,7 +55,10 @@ function updateQuantityInSession(id, quantity) {
                             <span class="bg-green-100 text-green-800 text-xs font-medium px-2.5 py-0.5 rounded">-10%</span>
                         </div>`;
                 } else {
-                    totalElement.innerText = `Sous Total : ${data.newTotal.toFixed(2)} $`;
+                    totalElement.innerHTML = `
+  <span class="font-bold text-gray-600">Sous Total :</span>
+  <span class="text-lg">${data.newTotal.toFixed(2)} $</span>
+`;
                 }
             } else {
                 console.error('Error updating quantity', data);

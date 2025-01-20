@@ -197,7 +197,7 @@ namespace gestioncommande.Controllers
 
                 Console.WriteLine($"Count of paid commandes: {counting}");
 
-                if (counting >= 1)
+                if (counting >= 10)
                 {
                     Console.WriteLine(" je suis rentreeeeeeeeeeeeeeeeeeePrixTotalAvecreduction: xc vbn,;jnhbgfvcxdsw<qwsxdfcvghbjnbvfcxdswq<wsdxc vbn");
                     panier.PrixTotalAvecreduction = 1;

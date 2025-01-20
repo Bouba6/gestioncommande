@@ -27,7 +27,8 @@ function addToCartjs(event, productId) {
         .then(data => {
             // Check if data is valid
             if (data && data.success) {
-                document.getElementById('cartItemCount').textContent = data.counting;
+                // document.getElementById('cartItemCount').textContent = data.counting;
+                window.updateCartCount(data.counting);
 
             }
             else {
