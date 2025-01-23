@@ -56,8 +56,8 @@ function updateQuantityInSession(id, quantity) {
                         </div>`;
                 } else {
                     totalElement.innerHTML = `
-  <span class="font-bold text-gray-600">Sous Total :</span>
-  <span class="text-lg">${data.newTotal.toFixed(2)} $</span>
+  <span class="font-bold text-darkinti text-xs sm:text-lg ">Sous Total :</span>
+  <span class="text-xs text-darkinti sm:text-lg">${data.newTotal.toFixed(2)} $</span>
 `;
                 }
             } else {
