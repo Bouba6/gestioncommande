@@ -19,6 +19,7 @@ namespace gestioncommande.Controllers
 
         public ProduitController(ApplicationDbContext context, ProduitService produitService)
         {
+
             _context = context;
             _produitService = produitService;
 
@@ -27,6 +28,10 @@ namespace gestioncommande.Controllers
         // GET: Produit
         public async Task<IActionResult> Index(int pageNumber = 1, int pageSize = 20)
         {
+            if (User.Identity.IsAuthenticated == false)
+            {
+                return RedirectToAction("Login", "Connexion");
+            }
 
             var products = from d in _context.produit
                            select d;
@@ -55,6 +60,10 @@ namespace gestioncommande.Controllers
 
         public async Task<IActionResult> ProduitDetails([FromBody] Produit model)
         {
+            if (User.Identity.IsAuthenticated == false)
+            {
+                return RedirectToAction("Login", "Connexion");
+            }
 
             Produit produit = await _produitService.GetById(model.Id);
 
@@ -75,6 +84,10 @@ namespace gestioncommande.Controllers
         // GET: Produit/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            if (User.Identity.IsAuthenticated == false)
+            {
+                return RedirectToAction("Login", "Connexion");
+            }
             if (id == null)
             {
                 return NotFound();
@@ -105,6 +118,10 @@ namespace gestioncommande.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create(Produit produit)
         {
+            if (User.Identity.IsAuthenticated == false)
+            {
+                return RedirectToAction("Login", "Connexion");
+            }
             ModelState.Remove("detailCommandes");
             if (produit.image != null)
             {
@@ -147,6 +164,10 @@ namespace gestioncommande.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(Produit produit)
         {
+            if (User.Identity.IsAuthenticated == false)
+            {
+                return RedirectToAction("Login", "Connexion");
+            }
             ModelState.Remove("detailCommandes");
             if (produit.image != null)
             {
@@ -209,6 +230,10 @@ namespace gestioncommande.Controllers
         [Authorize(Roles = "CLIENT")]
         public async Task<IActionResult> AddToCart([FromBody] Produit model)
         {
+            if (User.Identity.IsAuthenticated == false)
+            {
+                return RedirectToAction("Login", "Connexion");
+            }
 
             Produit produit = await _produitService.GetById(model.Id);
             var panier = HttpContext.Session.GetObjectFromJson<Panier>("panier") ?? new Panier();
@@ -283,6 +308,10 @@ namespace gestioncommande.Controllers
         [Authorize(Roles = "RS")]
         public async Task<IActionResult> Delete(int? id)
         {
+            if (User.Identity.IsAuthenticated == false)
+            {
+                return RedirectToAction("Login", "Connexion");
+            }
             if (id == null)
             {
                 return NotFound();
@@ -304,6 +333,10 @@ namespace gestioncommande.Controllers
         [Authorize(Roles = "RS")]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
+            if (User.Identity.IsAuthenticated == false)
+            {
+                return RedirectToAction("Login", "Connexion");
+            }
             var produit = await _context.produit.FindAsync(id);
             if (produit != null)
             {

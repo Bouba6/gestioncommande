@@ -31,6 +31,10 @@ namespace gestioncommande.Controllers
         // GET: Paiement
         public async Task<IActionResult> Index()
         {
+            if (User.Identity.IsAuthenticated == false)
+            {
+                return RedirectToAction("Login", "Connexion");
+            }
             var applicationDbContext = _context.paiement.Include(p => p.commande);
             return View(await applicationDbContext.ToListAsync());
         }
@@ -38,6 +42,10 @@ namespace gestioncommande.Controllers
         // GET: Paiement/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            if (User.Identity.IsAuthenticated == false)
+            {
+                return RedirectToAction("Login", "Connexion");
+            }
             if (id == null)
             {
                 return NotFound();
@@ -57,6 +65,10 @@ namespace gestioncommande.Controllers
         // GET: Paiement/Create
         public IActionResult Create()
         {
+            if (User.Identity.IsAuthenticated == false)
+            {
+                return RedirectToAction("Login", "Connexion");
+            }
             ViewData["commandeId"] = new SelectList(_context.commande, "Id", "Id");
             return View();
         }
@@ -67,6 +79,10 @@ namespace gestioncommande.Controllers
         [HttpPost]
         public async Task<IActionResult> paiement()
         {
+            if (User.Identity.IsAuthenticated == false)
+            {
+                return RedirectToAction("Login", "Connexion");
+            }
             Paiement paiement = new Paiement();
             var commandeId = Request.Form["commandeId"];
             var reference = Request.Form["reference"];
@@ -114,6 +130,10 @@ namespace gestioncommande.Controllers
         // GET: Paiement/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            if (User.Identity.IsAuthenticated == false)
+            {
+                return RedirectToAction("Login", "Connexion");
+            }
             if (id == null)
             {
                 return NotFound();

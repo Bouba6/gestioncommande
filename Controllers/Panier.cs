@@ -22,6 +22,7 @@ public class Panier
     public void AjouterProduits(Produit produit1, double qte)
     {
 
+
         Console.WriteLine(PrixTotal);
         // Vérifier si l'article existe déjà dans le panier
         DetailCommande existingDetail = detailCommande.FirstOrDefault(d => d.produit.Id == produit1.Id);

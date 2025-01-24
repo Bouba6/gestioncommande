@@ -88,6 +88,10 @@ namespace gestioncommande.Controllers
 
         public async Task<IActionResult> Index()
         {
+            if (User.Identity.IsAuthenticated == false)
+            {
+                return RedirectToAction("Login", "Connexion");
+            }
             var login = User.Identity.Name;
             var users = await _userService.FindByLogin(login);
             UserConnected userConnected = new UserConnected();
@@ -155,6 +159,10 @@ namespace gestioncommande.Controllers
         // GET: Commande/Details/5
         public async Task<IActionResult> Details(int? id)
         {
+            if (User.Identity.IsAuthenticated == false)
+            {
+                return RedirectToAction("Login", "Connexion");
+            }
             if (id == null)
             {
                 return NotFound();
@@ -207,6 +215,10 @@ namespace gestioncommande.Controllers
         [Authorize(Roles = "CLIENT")]
         public async Task<IActionResult> Create()
         {
+            if (User.Identity.IsAuthenticated == false)
+            {
+                return RedirectToAction("Login", "Connexion");
+            }
 
             var produits = await _context.produit.ToListAsync();
 
@@ -225,6 +237,10 @@ namespace gestioncommande.Controllers
 
         public IActionResult AjouterProduit(int produitId, int qte)
         {
+            if (User.Identity.IsAuthenticated == false)
+            {
+                return RedirectToAction("Login", "Connexion");
+            }
 
             var produit = _context.produit.FirstOrDefault(a => a.Id == produitId);
             var panier = HttpContext.Session.GetObjectFromJson<Panier>("panier") ?? new Panier();
@@ -287,6 +303,10 @@ namespace gestioncommande.Controllers
         // GET: Commande/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            if (User.Identity.IsAuthenticated == false)
+            {
+                return RedirectToAction("Login", "Connexion");
+            }
             if (id == null)
             {
                 return NotFound();
@@ -331,6 +351,10 @@ namespace gestioncommande.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("DateCommande,PrixTotal,CLientId,LivreurId,hasPayed,Taken,Id,CreateAt,UpdateAt")] Commande commande)
         {
+            if (User.Identity.IsAuthenticated == false)
+            {
+                return RedirectToAction("Login", "Connexion");
+            }
             if (id != commande.Id)
             {
                 return NotFound();
@@ -367,6 +391,10 @@ namespace gestioncommande.Controllers
         // GET: Commande/Delete/5
         public async Task<IActionResult> Delete(int? id)
         {
+            if (User.Identity.IsAuthenticated == false)
+            {
+                return RedirectToAction("Login", "Connexion");
+            }
             if (id == null)
             {
                 return NotFound();
