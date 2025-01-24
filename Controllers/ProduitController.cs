@@ -28,10 +28,6 @@ namespace gestioncommande.Controllers
         // GET: Produit
         public async Task<IActionResult> Index(int pageNumber = 1, int pageSize = 20)
         {
-            if (User.Identity.IsAuthenticated == false)
-            {
-                return RedirectToAction("Login", "Connexion");
-            }
 
             var products = from d in _context.produit
                            select d;

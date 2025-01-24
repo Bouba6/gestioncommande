@@ -351,10 +351,7 @@ namespace gestioncommande.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Edit(int id, [Bind("DateCommande,PrixTotal,CLientId,LivreurId,hasPayed,Taken,Id,CreateAt,UpdateAt")] Commande commande)
         {
-            if (User.Identity.IsAuthenticated == false)
-            {
-                return RedirectToAction("Login", "Connexion");
-            }
+
             if (id != commande.Id)
             {
                 return NotFound();
